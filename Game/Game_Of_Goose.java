@@ -14,7 +14,7 @@ public class Juego_Oca {
 
 		Scanner scan = new Scanner(System.in);		
 			
-		System.out.print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n�Cu�ntos jugadores hay? ");  
+		System.out.print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n¿Cuántos jugadores hay? ");  
 		int numeroDeJugadors = scan.nextInt();
 		int i;
 		int x;
@@ -23,8 +23,8 @@ public class Juego_Oca {
 
 		
 		while (numeroDeJugadors < 2 || numeroDeJugadors > 4) {
-			System.out.print(":::::::::::::::::::::::::::::::::::::::\n�error, n�mero de jugadores incorrecto!\n:::::::::::::::::::::::::::::::::::::::\n");
-			System.out.println("\nIntroduce un n�mero de jugadores: ");
+			System.out.print(":::::::::::::::::::::::::::::::::::::::\n¡error, número de jugadores incorrecto!\n:::::::::::::::::::::::::::::::::::::::\n");
+			System.out.println("\nIntroduce un número de jugadores: ");
 			numeroDeJugadors = scan.nextInt();
 			System.out.println("______________________________________\n");
 		}
@@ -47,7 +47,7 @@ public class Juego_Oca {
 			caselles[i] = i;
 		}
 
-		//Inicializar array casillas oca i definir posici�n 1 amb 5.
+		//Inicializar array casillas oca i definir posición 1 amb 5.
 		int casellesOca [] = new int [14];
 		casellesOca[0] = 5;
 
@@ -70,7 +70,7 @@ public class Juego_Oca {
 		int dau1;
 		int dau2; 
 		
-		//Inicializar n�mero aleatorio entre el 1 y 2
+		//Inicializar número aleatorio entre el 1 y 2
 		int random;
 		
 		//Inicializar i definir variable bucle i volver a tirar.
@@ -79,10 +79,10 @@ public class Juego_Oca {
 		//Inicializar i definir variable de contador de rondas.
 		int numeroDeRonda = 1;
 
-		//Inicialitzar acci�n.
+		//Inicialitzar acción.
 		String accio;
 
-		//Inicializar i definir posici�n del jugador.
+		//Inicializar i definir posición del jugador.
 		int posicioDelsJugadors[] = new int [numeroDeJugadors];
 		for (i = 0; i < numeroDeJugadors; i++) {
 			posicioDelsJugadors[i] = 0;
@@ -102,7 +102,7 @@ public class Juego_Oca {
 			esticAlPou[i] = false;
 		}
 
-		//Inicialitzar i definir variable per saber si �s la primera tirada.
+		//Inicialitzar i definir variable per saber si és la primera tirada.
 		int contadorTirades [] = new int [numeroDeJugadors];
 		for (i = 0; i < contadorTirades.length; i ++) {
 			contadorTirades[i] = 0;
@@ -136,7 +136,7 @@ public class Juego_Oca {
 					castic[i] --;
 			}
 			else {
-				//Registrar quina acci� vol fer el jugador.
+				//Registrar quina acció vol fer el jugador.
 				System.out.print("______________________________________\n\nEs el turno del jugador [" + (i + 1) + "], {" + nomDelsJugadors[i] + "}\n>> ");
 				accio = scan.next();
 
@@ -145,7 +145,7 @@ public class Juego_Oca {
 				
 				//Bucle no tirar.
 				while (accio.equals("TIRO")==false) {
-					System.out.print(":::::::::::::::::::::::::::::::::::::::\n      �error, comando no v�lido!\n:::::::::::::::::::::::::::::::::::::::\n>> ");
+					System.out.print(":::::::::::::::::::::::::::::::::::::::\n¡error, comando no válido!\n:::::::::::::::::::::::::::::::::::::::\n>> ");
 					accio = scan.next().toUpperCase();
 				}
 
@@ -175,7 +175,7 @@ public class Juego_Oca {
 					//Actualizar posici�n del jugador.
 					posicioDelsJugadors[i] += (dau1 + dau2);
 
-					//Controlador per no estar a la casella 64 o m�s.
+					//Controlador per no estar a la casella 64 o más.
 					if (posicioDelsJugadors[i] > caselles.length) {
 						posicioDelsJugadors[i] = caselles.length + (caselles.length - posicioDelsJugadors[i]);
 					}
@@ -188,69 +188,15 @@ public class Juego_Oca {
 						posicioDelsJugadors[i] = 26;
 						tornarTirar = true;
 						
-						//Numero aleatorio
-						random = (int) (Math.random() * 2 + 1);
+						dados();
 						
-						//Dibujo que saldr�
-						if (random == 1) {
-							
-							//Dibujo dados 1.
-							System.out.println(
-								  "       .-------.    ______\r\n"
-								+ "      /   o   /|   /\\     \\\r\n"
-								+ "     /_______/o|  /o \\  o  \\\r\n"
-								+ "     | o     | | /   o\\_____\\\r\n"
-								+ "     |   o   |o/ \\o   /o    /\r\n"
-								+ "     |     o |/   \\ o/  o  /\r\n"
-								+ "     '-------'     \\/____o/\n");
-						} else {
-							
-							//Dibujo dados 2.
-							System.out.println(""
-									+ "               (( _______\r\n"
-									+ "     _______     /\\O    O\\\r\n"
-									+ "    /O     /\\   /  \\      \\\r\n"
-									+ "   /   O  /O \\ / O  \\O____O\\ ))\r\n"
-									+ "((/_____O/    \\\\    /O     /\r\n"
-									+ "  \\O    O\\    / \\  /   O  /\r\n"
-									+ "   \\O    O\\ O/   \\/_____O/\r\n"
-									+ "    \\O____O\\/ ))          ))\r\n"
-									+ "  ((");
-						}
 						
 					} else {
 						posicioDelsJugadors[i] = 53;
 						tornarTirar = true;
 						
-						//Numero aleatorio
-						random = (int) (Math.random() * 2 + 1);
+						dados();
 						
-						//Dibujo que saldr�
-						if (random == 1) {
-							
-							//Dibujo dados 1.
-							System.out.println(
-								  "       .-------.    ______\r\n"
-								+ "      /   o   /|   /\\     \\\r\n"
-								+ "     /_______/o|  /o \\  o  \\\r\n"
-								+ "     | o     | | /   o\\_____\\\r\n"
-								+ "     |   o   |o/ \\o   /o    /\r\n"
-								+ "     |     o |/   \\ o/  o  /\r\n"
-								+ "     '-------'     \\/____o/\n");
-						} else {
-							
-							//Dibujo dados 2.
-							System.out.println(""
-									+ "               (( _______\r\n"
-									+ "     _______     /\\O    O\\\r\n"
-									+ "    /O     /\\   /  \\      \\\r\n"
-									+ "   /   O  /O \\ / O  \\O____O\\ ))\r\n"
-									+ "((/_____O/    \\\\    /O     /\r\n"
-									+ "  \\O    O\\    / \\  /   O  /\r\n"
-									+ "   \\O    O\\ O/   \\/_____O/\r\n"
-									+ "    \\O____O\\/ ))          ))\r\n"
-									+ "  ((");
-						}
 					}
 				}
 
@@ -262,125 +208,9 @@ public class Juego_Oca {
 					if (posicioDelsJugadors[i] == casellesOca[x]) {
 						if (posicioDelsJugadors[i] < casellesOca[13]) {
 							
-							//Dibujo aleatorio.
-							random = (int) (Math.random() * 7 + 1);
+							ocas();							
 							
-							//Sale dibujo 1 o dibujo 2
-							if (random == 1) {
-								
-								//Dibujo oca 1.
-								System.out.println(""
-										+ "                                   ___\r\n"
-										+ "                               ,-\"\"   `.\r\n"
-										+ "                             ,'  _   e )`-._\r\n"
-										+ "                            /  ,' `-._<.===-'\r\n"
-										+ "                           /  /\r\n"
-										+ "                          /  ;\r\n"
-										+ "              _          /   ;\r\n"
-										+ " (`._    _.-\"\" \"\"--..__,'    |\r\n"
-										+ " <_  `-\"\"                     \\\r\n"
-										+ "  <`-                          :\r\n"
-										+ "   (__   <__.                  ;\r\n"
-										+ "     `-.   '-.__.      _.'    /\r\n"
-										+ "        \\      `-.__,-'    _,'\r\n"
-										+ "         `._    ,    /__,-'\r\n"
-										+ "            \"\"._\\__,'< <____\r\n"
-										+ "                 | |  `----.`.\r\n"
-										+ "                 | |        \\ `.\r\n"
-										+ "                 ; |___      \\-``\r\n"
-										+ "                 \\   --<\r\n"
-										+ "                  `.`.<\r\n"
-										+ "                    `-'\r\n"
-										+ "");
-							} else if (random == 2) {
-								
-								//Dibujo oca 2.
-								System.out.println(""
-										+ "                                    _\r\n"
-										+ "                                ,-\"\" \"\".\r\n"
-										+ "                              ,'  ____  `.\r\n"
-										+ "                            ,'  ,'    `.  `._\r\n"
-										+ "   (`.         _..--.._   ,'  ,'        \\    \\\r\n"
-										+ "  (`-.\\    .-\"\"        \"\"'   /          (  d _b\r\n"
-										+ " (`._  `-\"\" ,._             (            `-(   \\\r\n"
-										+ " <_  `     (  <`<            \\              `-._\\\r\n"
-										+ "  <`-       (__< <           :\r\n"
-										+ "   (__        (_<_<          ;\r\n"
-										+ "    `--------------------------\n");
-							} else if (random == 3) {
-								
-								//Dibujo oca 3.
-								System.out.println(""
-										+ "	  _      _      _\r\n"
-										+ "	>(.)__ <(.)__ =(.)__\r\n"
-										+ "	 (___/  (___/  (___/  \n");
-							} else if (random == 4) {
-								
-								//Dibujo oca 4.
-								System.out.println(""
-										+ "                 ,-.\r\n"
-										+ "         ,      ( {o\\\r\n"
-										+ "         {`\"=,___) (`~\r\n"
-										+ "          \\  ,_.-   )\r\n"
-										+ "  ~^~^~^`- ~^ ~^ '~^~^~^~\n");
-							
-							} else if (random == 6) {
-								
-								//Dibujo oca 6.
-								System.out.println(""
-										+ "      ,;MMMM..\r\n"
-										+ "   ,;:MM\"MMMMM.\r\n"
-										+ ",;.MM::M.MMMMMM:\r\n"
-										+ "\"\"::.;'MMMMMMMMM\r\n"
-										+ "       \"'\"\"MMMMM;\r\n"
-										+ "           ':MMMM.\r\n"
-										+ "            'MMMM;\r\n"
-										+ "             :MMMM;.\r\n"
-										+ "              MMMMMM;...\r\n"
-										+ "              MMMMMMMMMMMMM;.;..\r\n"
-										+ "              MMMMMMMMMMMMMMMMMMM...\r\n"
-										+ "              MMMMMM:MMMMMMMMMMMMMMM;...       ..:\r\n"
-										+ "              MMMMMM;MMMMMMMMMMMMM:MMMMMMM:MMMM:M\r\n"
-										+ "              :MMMMMM:MMMMMMMMMMMMMMM.:::;:::;;:'\r\n"
-										+ "              ':MMMMMMM:MMMM:;MM:M;.MMM:';::M:'\r\n"
-										+ "               ':MMMMMM;M;;MM;::M;;::::;MM:\"\"\r\n"
-										+ "                 'MMMMMMMM;M;:::MMMMMMMMMM\"\r\n"
-										+ "                  ''MMMMMMMMMMMMMMMMMMMMM\"\r\n"
-										+ "                     ':MMMMMMMMMMMMMMMM\"'\r\n"
-										+ "                       '':MMMMMMMMMMM\"'\r\n"
-										+ "                          ':MMMMMM\"\"'\r\n"
-										+ "                             .\r\n"
-										+ "                             :\r\n"
-										+ "                            ::\r\n"
-										+ "                       ,..;.M'\r\n"
-										+ "                      ,;;MM:'\r\n"
-										+ "                        '\"'");
-							} else {
-								
-								//Dibujo oca 7.
-								System.out.println(""
-										+ "                                                        _...--.\r\n"
-										+ "                                        _____......----'     .'\r\n"
-										+ "                                  _..-''                   .'\r\n"
-										+ "                                .'                       ./\r\n"
-										+ "                        _.--._.'                       .' |\r\n"
-										+ "                     .-'                           .-.'  /\r\n"
-										+ "                   .'   _.-.                     .  \\   '\r\n"
-										+ "                 .'  .'   .'    _    .-.        / `./  :\r\n"
-										+ "               .'  .'   .'  .--' `.  |  \\  |`. |     .'\r\n"
-										+ "            _.'  .'   .' `.'       `-'   \\ / |.'   .'\r\n"
-										+ "         _.'  .-'   .'     `-.            `      .'\r\n"
-										+ "       .'   .'    .'          `-.._ _ _ _ .-.    :\r\n"
-										+ "      /    /o _.-'               .--'   .'   \\   |\r\n"
-										+ "    .'-.__..-'                  /..    .`    / .'\r\n"
-										+ "  .'   . '                       /.'/.'     /  |\r\n"
-										+ " `---'                                   _.'   '\r\n"
-										+ "                                       /.'    .'\r\n"
-										+ "                                        /.'/.'\r\n"
-										+ "");
-							}
-							
-							System.out.println("Casilla n� [" + posicioDelsJugadors[i] + "]: Oca. De oca en oca y tiro porque me toca.");
+							System.out.println("Casilla nº [" + posicioDelsJugadors[i] + "]: Oca. De oca en oca y tiro porque me toca.");
 							posicioDelsJugadors[i] = casellesOca[(x + 1)];
 
 							text = "Avanzas";
@@ -388,125 +218,9 @@ public class Juego_Oca {
 							break;
 						} else {
 							
-							//Dibujo aleatorio.
-							random = (int) (Math.random() * 7 + 1);
+							ocas();							
 							
-							//Sale dibujo 1 o dibujo 2
-							if (random == 1) {
-								
-								//Dibujo oca 1.
-								System.out.println(""
-										+ "                                   ___\r\n"
-										+ "                               ,-\"\"   `.\r\n"
-										+ "                             ,'  _   e )`-._\r\n"
-										+ "                            /  ,' `-._<.===-'\r\n"
-										+ "                           /  /\r\n"
-										+ "                          /  ;\r\n"
-										+ "              _          /   ;\r\n"
-										+ " (`._    _.-\"\" \"\"--..__,'    |\r\n"
-										+ " <_  `-\"\"                     \\\r\n"
-										+ "  <`-                          :\r\n"
-										+ "   (__   <__.                  ;\r\n"
-										+ "     `-.   '-.__.      _.'    /\r\n"
-										+ "        \\      `-.__,-'    _,'\r\n"
-										+ "         `._    ,    /__,-'\r\n"
-										+ "            \"\"._\\__,'< <____\r\n"
-										+ "                 | |  `----.`.\r\n"
-										+ "                 | |        \\ `.\r\n"
-										+ "                 ; |___      \\-``\r\n"
-										+ "                 \\   --<\r\n"
-										+ "                  `.`.<\r\n"
-										+ "                    `-'\r\n"
-										+ "");
-							} else if (random == 2) {
-								
-								//Dibujo oca 2.
-								System.out.println(""
-										+ "                                    _\r\n"
-										+ "                                ,-\"\" \"\".\r\n"
-										+ "                              ,'  ____  `.\r\n"
-										+ "                            ,'  ,'    `.  `._\r\n"
-										+ "   (`.         _..--.._   ,'  ,'        \\    \\\r\n"
-										+ "  (`-.\\    .-\"\"        \"\"'   /          (  d _b\r\n"
-										+ " (`._  `-\"\" ,._             (            `-(   \\\r\n"
-										+ " <_  `     (  <`<            \\              `-._\\\r\n"
-										+ "  <`-       (__< <           :\r\n"
-										+ "   (__        (_<_<          ;\r\n"
-										+ "    `--------------------------\n");
-							} else if (random == 3) {
-								
-								//Dibujo oca 3.
-								System.out.println(""
-										+ "	  _      _      _\r\n"
-										+ "	>(.)__ <(.)__ =(.)__\r\n"
-										+ "	 (___/  (___/  (___/  \n");
-							} else if (random == 4) {
-								
-								//Dibujo oca 4.
-								System.out.println(""
-										+ "                 ,-.\r\n"
-										+ "         ,      ( {o\\\r\n"
-										+ "         {`\"=,___) (`~\r\n"
-										+ "          \\  ,_.-   )\r\n"
-										+ "  ~^~^~^`- ~^ ~^ '~^~^~^~\n");
-							
-							} else if (random == 6) {
-								
-								//Dibujo oca 6.
-								System.out.println(""
-										+ "      ,;MMMM..\r\n"
-										+ "   ,;:MM\"MMMMM.\r\n"
-										+ ",;.MM::M.MMMMMM:\r\n"
-										+ "\"\"::.;'MMMMMMMMM\r\n"
-										+ "       \"'\"\"MMMMM;\r\n"
-										+ "           ':MMMM.\r\n"
-										+ "            'MMMM;\r\n"
-										+ "             :MMMM;.\r\n"
-										+ "              MMMMMM;...\r\n"
-										+ "              MMMMMMMMMMMMM;.;..\r\n"
-										+ "              MMMMMMMMMMMMMMMMMMM...\r\n"
-										+ "              MMMMMM:MMMMMMMMMMMMMMM;...       ..:\r\n"
-										+ "              MMMMMM;MMMMMMMMMMMMM:MMMMMMM:MMMM:M\r\n"
-										+ "              :MMMMMM:MMMMMMMMMMMMMMM.:::;:::;;:'\r\n"
-										+ "              ':MMMMMMM:MMMM:;MM:M;.MMM:';::M:'\r\n"
-										+ "               ':MMMMMM;M;;MM;::M;;::::;MM:\"\"\r\n"
-										+ "                 'MMMMMMMM;M;:::MMMMMMMMMM\"\r\n"
-										+ "                  ''MMMMMMMMMMMMMMMMMMMMM\"\r\n"
-										+ "                     ':MMMMMMMMMMMMMMMM\"'\r\n"
-										+ "                       '':MMMMMMMMMMM\"'\r\n"
-										+ "                          ':MMMMMM\"\"'\r\n"
-										+ "                             .\r\n"
-										+ "                             :\r\n"
-										+ "                            ::\r\n"
-										+ "                       ,..;.M'\r\n"
-										+ "                      ,;;MM:'\r\n"
-										+ "                        '\"'");
-							} else {
-								
-								//Dibujo oca 7.
-								System.out.println(""
-										+ "                                                        _...--.\r\n"
-										+ "                                        _____......----'     .'\r\n"
-										+ "                                  _..-''                   .'\r\n"
-										+ "                                .'                       ./\r\n"
-										+ "                        _.--._.'                       .' |\r\n"
-										+ "                     .-'                           .-.'  /\r\n"
-										+ "                   .'   _.-.                     .  \\   '\r\n"
-										+ "                 .'  .'   .'    _    .-.        / `./  :\r\n"
-										+ "               .'  .'   .'  .--' `.  |  \\  |`. |     .'\r\n"
-										+ "            _.'  .'   .' `.'       `-'   \\ / |.'   .'\r\n"
-										+ "         _.'  .-'   .'     `-.            `      .'\r\n"
-										+ "       .'   .'    .'          `-.._ _ _ _ .-.    :\r\n"
-										+ "      /    /o _.-'               .--'   .'   \\   |\r\n"
-										+ "    .'-.__..-'                  /..    .`    / .'\r\n"
-										+ "  .'   . '                       /.'/.'     /  |\r\n"
-										+ " `---'                                   _.'   '\r\n"
-										+ "                                       /.'    .'\r\n"
-										+ "                                        /.'/.'\r\n"
-										+ "");
-							}
-							
-							System.out.println("Casilla n� [" + posicioDelsJugadors[i] + "]: Oca. De oca en oca y tiro porque me toca.");
+							System.out.println("Casilla nº [" + posicioDelsJugadors[i] + "]: Oca. De oca en oca y tiro porque me toca.");
 							posicioDelsJugadors[i] = casellesOca[13];
 							tornarTirar = true;
 							text = "Avanzas";
@@ -518,80 +232,9 @@ public class Juego_Oca {
 					
 					if (posicioDelsJugadors[i] == 6) {
 						
-						//Dibujo aleatorio.
-						random = (int) (Math.random() * 3 + 1);
-						
-						
-						//Sale dibujo 1, dibujo 2 o dibujo 3
-						if (random == 1) {
-							
-							//Dibujo puente 1.
-							System.out.println(""
-									+ "                                           ^^\r\n"
-									+ "      ^^      ..                                       ..\r\n"
-									+ "              []                                       []\r\n"
-									+ "            .:[]:_          ^^                       ,:[]:.\r\n"
-									+ "          .: :[]: :-.                             ,-: :[]: :.\r\n"
-									+ "        .: : :[]: : :`._                       ,.': : :[]: : :.\r\n"
-									+ "      .: : : :[]: : : : :-._               _,-: : : : :[]: : : :.\r\n"
-									+ "  _..: : : : :[]: : : : : : :-._________.-: : : : : : :[]: : : : :-._\r\n"
-									+ "  _:_:_:_:_:_:[]:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:[]:_:_:_:_:_:_\r\n"
-									+ "  !!!!!!!!!!!![]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!![]!!!!!!!!!!!!!\r\n"
-									+ "  ^^^^^^^^^^^^[]^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[]^^^^^^^^^^^^^\r\n"
-									+ "              []                                       []\r\n"
-									+ "              []                                       []\r\n"
-									+ "              []                                       []\r\n"
-									+ "   ~~^-~^_~^~/  \\~^-~^~_~^-~_^~-^~_^~~-^~_~^~-~_~-^~_^/  \\~^-~_~^-~~-\r\n"
-									+ "  ~ _~~- ~^-^~-^~~- ^~_^-^~~_ -~^_ -~_-~~^- _~~_~-^_ ~^-^~~-_^-~ ~^\r\n"
-									+ "     ~ ^- _~~_-  ~~ _ ~  ^~  - ~~^ _ -  ^~-  ~ _  ~~^  - ~_   - ~^_~\r\n"
-									+ "       ~-  ^_  ~^ -  ^~ _ - ~^~ _   _~^~-  _ ~~^ - _ ~ - _ ~~^ -\r\n"
-									+ "          ~^ -_ ~^^ -_ ~ _ - _ ~^~-  _~ -_   ~- _ ~^ _ -  ~ ^-\r\n"
-									+ "              ~^~ - _ ^ - ~~~ _ - _ ~-^ ~ __- ~_ - ~  ~^_-\r\n"
-									+ "                  ~ ~- ^~ -  ~^ -  ~ ^~ - ~~  ^~ - ~\n");
-						} else if (random == 2) {
-							
-							//Dibujo puente 2.
-							System.out.println("                           #########                      \r\n"
-									+ "                        ######                            \r\n"
-									+ "                   ___###___________                      \r\n"
-									+ "            _,--\"\"\"_________________\"\"\"--._               \r\n"
-									+ "          /',--'\\\\\"##           __  \"//'--.'\\   ,  /\\    _\r\n"
-									+ "-._  /\\  //'   ##\\\\       ,-_,-'  \\_///\\,-'`\\\\-' \\/  \\,-' \r\n"
-									+ "   \\/  \\//    _  _\\\\ ,-._/         //'       \\\\           \r\n"
-									+ "       //'--._M_|H|\\\\___   ___   _//   ___   _\\\\   ___    \r\n"
-									+ "      | |    (|   | \\\\  | |   | |// | |   | | | | |   |   \r\n"
-									+ "   ___| |   /ooo=oo-o\\\\oo-oo=oo-//=oo-oo=oo-oo| |=oo=oo___\r\n"
-									+ "        \\\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"|           \r\n"
-									+ "         |    \\                           .   /           \r\n"
-									+ "   .      \\   /\\            .  -     '    .  /            \r\n"
-									+ "           `-.  '-..     ' '          ,  ,,-'     `       \r\n"
-									+ "              \\     '- '            ,/,-'/                \r\n"
-									+ "    \\          \\_- ' '             --',-'                 \r\n"
-									+ "              -'                    \\/            |       \r\n"
-									+ "     |  _  -                          - _        .       \r\n"
-									+ "                                                /     ");
-							
-						} else {
-							
-							//Dibujo puente 3.
-							System.out.println(""
-									+ "                             ___....___\r\n"
-									+ "   ^^                __..-:'':__:..:__:'':-..__\r\n"
-									+ "                 _.-:__:.-:'':  :  :  :'':-.:__:-._\r\n"
-									+ "               .':.-:  :  :  :  :  :  :  :  :  :._:'.\r\n"
-									+ "            _ :.':  :  :  :  :  :  :  :  :  :  :  :'.: _\r\n"
-									+ "           [ ]:  :  :  :  :  :  :  :  :  :  :  :  :  :[ ]\r\n"
-									+ "           [ ]:  :  :  :  :  :  :  :  :  :  :  :  :  :[ ]\r\n"
-									+ "  :::::::::[ ]:__:__:__:__:__:__:__:__:__:__:__:__:__:[ ]:::::::::::\r\n"
-									+ "  !!!!!!!!![ ]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!![ ]!!!!!!!!!!!\r\n"
-									+ "  ^^^^^^^^^[ ]^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[ ]^^^^^^^^^^^\r\n"
-									+ "           [ ]                                        [ ]\r\n"
-									+ "           [ ]                                        [ ]\r\n"
-									+ "           [ ]                                        [ ]\r\n"
-									+ "   ~~^_~^~/   \\~^-~^~ _~^-~_^~-^~_^~~-^~_~^~-~_~-^~_^/   \\~^ ~~_ ^\n");
-						}
-						
-						System.out.println("Casilla n� [" + posicioDelsJugadors[i] + "]: Puente. De puente a puente y tiro porque me lleva la corriente.");
+						puentes();
+												
+						System.out.println("Casilla nº [" + posicioDelsJugadors[i] + "]: Puente. De puente a puente y tiro porque me lleva la corriente.");
 						posicioDelsJugadors[i] = 12;
 
 						text = "Avanzas";
@@ -600,79 +243,9 @@ public class Juego_Oca {
 					}
 					else if (posicioDelsJugadors[i] == 12) {
 						
-						//Dibujo aleatorio.
-						random = (int) (Math.random() * 3 + 1);
+						puentes();					
 						
-						//Sale dibujo 1, dibujo 2 o dibujo3
-						if (random == 1) {
-							
-							//Dibujo puente 1.
-							System.out.println(""
-									+ "                                           ^^\r\n"
-									+ "      ^^      ..                                       ..\r\n"
-									+ "              []                                       []\r\n"
-									+ "            .:[]:_          ^^                       ,:[]:.\r\n"
-									+ "          .: :[]: :-.                             ,-: :[]: :.\r\n"
-									+ "        .: : :[]: : :`._                       ,.': : :[]: : :.\r\n"
-									+ "      .: : : :[]: : : : :-._               _,-: : : : :[]: : : :.\r\n"
-									+ "  _..: : : : :[]: : : : : : :-._________.-: : : : : : :[]: : : : :-._\r\n"
-									+ "  _:_:_:_:_:_:[]:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:[]:_:_:_:_:_:_\r\n"
-									+ "  !!!!!!!!!!!![]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!![]!!!!!!!!!!!!!\r\n"
-									+ "  ^^^^^^^^^^^^[]^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[]^^^^^^^^^^^^^\r\n"
-									+ "              []                                       []\r\n"
-									+ "              []                                       []\r\n"
-									+ "              []                                       []\r\n"
-									+ "   ~~^-~^_~^~/  \\~^-~^~_~^-~_^~-^~_^~~-^~_~^~-~_~-^~_^/  \\~^-~_~^-~~-\r\n"
-									+ "  ~ _~~- ~^-^~-^~~- ^~_^-^~~_ -~^_ -~_-~~^- _~~_~-^_ ~^-^~~-_^-~ ~^\r\n"
-									+ "     ~ ^- _~~_-  ~~ _ ~  ^~  - ~~^ _ -  ^~-  ~ _  ~~^  - ~_   - ~^_~\r\n"
-									+ "       ~-  ^_  ~^ -  ^~ _ - ~^~ _   _~^~-  _ ~~^ - _ ~ - _ ~~^ -\r\n"
-									+ "          ~^ -_ ~^^ -_ ~ _ - _ ~^~-  _~ -_   ~- _ ~^ _ -  ~ ^-\r\n"
-									+ "              ~^~ - _ ^ - ~~~ _ - _ ~-^ ~ __- ~_ - ~  ~^_-\r\n"
-									+ "                  ~ ~- ^~ -  ~^ -  ~ ^~ - ~~  ^~ - ~\n");
-						} else if (random == 2) {
-							
-							//Dibujo puente 2.
-							System.out.println("                           #########                      \r\n"
-									+ "                        ######                            \r\n"
-									+ "                   ___###___________                      \r\n"
-									+ "            _,--\"\"\"_________________\"\"\"--._               \r\n"
-									+ "          /',--'\\\\\"##           __  \"//'--.'\\   ,  /\\    _\r\n"
-									+ "-._  /\\  //'   ##\\\\       ,-_,-'  \\_///\\,-'`\\\\-' \\/  \\,-' \r\n"
-									+ "   \\/  \\//    _  _\\\\ ,-._/         //'       \\\\           \r\n"
-									+ "       //'--._M_|H|\\\\___   ___   _//   ___   _\\\\   ___    \r\n"
-									+ "      | |    (|   | \\\\  | |   | |// | |   | | | | |   |   \r\n"
-									+ "   ___| |   /ooo=oo-o\\\\oo-oo=oo-//=oo-oo=oo-oo| |=oo=oo___\r\n"
-									+ "        \\\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"|           \r\n"
-									+ "         |    \\                           .   /           \r\n"
-									+ "   .      \\   /\\            .  -     '    .  /            \r\n"
-									+ "           `-.  '-..     ' '          ,  ,,-'     `       \r\n"
-									+ "              \\     '- '            ,/,-'/                \r\n"
-									+ "    \\          \\_- ' '             --',-'                 \r\n"
-									+ "              -'                    \\/            |       \r\n"
-									+ "     |  _  -                          - _        .       \r\n"
-									+ "                                                /     ");
-							
-						} else {
-							
-							//Dibujo puente 3.
-							System.out.println(""
-									+ "                             ___....___\r\n"
-									+ "   ^^                __..-:'':__:..:__:'':-..__\r\n"
-									+ "                 _.-:__:.-:'':  :  :  :'':-.:__:-._\r\n"
-									+ "               .':.-:  :  :  :  :  :  :  :  :  :._:'.\r\n"
-									+ "            _ :.':  :  :  :  :  :  :  :  :  :  :  :'.: _\r\n"
-									+ "           [ ]:  :  :  :  :  :  :  :  :  :  :  :  :  :[ ]\r\n"
-									+ "           [ ]:  :  :  :  :  :  :  :  :  :  :  :  :  :[ ]\r\n"
-									+ "  :::::::::[ ]:__:__:__:__:__:__:__:__:__:__:__:__:__:[ ]:::::::::::\r\n"
-									+ "  !!!!!!!!![ ]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!![ ]!!!!!!!!!!!\r\n"
-									+ "  ^^^^^^^^^[ ]^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[ ]^^^^^^^^^^^\r\n"
-									+ "           [ ]                                        [ ]\r\n"
-									+ "           [ ]                                        [ ]\r\n"
-									+ "           [ ]                                        [ ]\r\n"
-									+ "   ~~^_~^~/   \\~^-~^~ _~^-~_^~-^~_^~~-^~_~^~-~_~-^~_^/   \\~^ ~~_ ^\n");
-						}
-						
-						System.out.println("Casilla n� [" + posicioDelsJugadors[i] + "]: Puente. De puente a puente y tiro porque me lleva la corriente.");
+						System.out.println("Casilla nº [" + posicioDelsJugadors[i] + "]: Puente. De puente a puente y tiro porque me lleva la corriente.");
 						posicioDelsJugadors[i] = 6;
 						text = "Retrocedes";
 
@@ -685,76 +258,9 @@ public class Juego_Oca {
 					else if (posicioDelsJugadors[i] == 19) {
 						castic[i] ++;
 						
-						//Numero aleatorio
-						random = (int) (Math.random() * 3 + 1);
+						posadas();
 						
-						//Dibujo que saldr�
-						if (random == 1) {
-							
-							//Dibujo posada 1.
-							System.out.println(
-								  "                          \r\n"
-								+ "                      _II_\r\n"
-								+ "                      [__] \r\n"
-								+ "    __________________|  |___\r\n"
-								+ "   /^^^^^^,-.^^^^^^^^\\|__|^^^\\\r\n"
-								+ "  /     ,',-.`.               \\\r\n"
-								+ " /    ,','   `.`.     ,-\"\"\"-.  \\\r\n"
-								+ "/___,','__   __`.`.__/_,\"T\"._\\__\\\r\n"
-								+ " |='-'||/\\| |^^||`-`=|_|_|_|_|=|\r\n"
-								+ " |= = ||)(| |__||= ==|_|_|_|_|=|\r\n"
-								+ " |= ==|\"\"\"\" \"\"\"\"| = =____= =_==|\r\n"
-								+ " |== =| __   __ |= =| [] | |^|=|\r\n"
-								+ " |= ==||/\\| |==||== |   o|=|_| |\r\n"
-								+ " |== =||)(| |  || = | == | == =|\r\n"
-								+ " |= ==|\"\"\"\" \"\"\"\"|== |____|= = =| \r\n"
-								+ " \"\"\"\"\"|_________|\"\"\"'====`\"\"\"\"\"\"\n");
-						} else if (random == 2) {
-							
-							//Dibujo posada 2.
-							System.out.println(""
-									+ "                           (   )\r\n"
-									+ "                          (    )\r\n"
-									+ "                           (    )\r\n"
-									+ "                          (    )\r\n"
-									+ "                            )  )\r\n"
-									+ "                           (  (                  /\\\r\n"
-									+ "                            (_)                 /  \\  /\\\r\n"
-									+ "                    ________[_]________      /\\/    \\/  \\\r\n"
-									+ "           /\\      /\\        ______    \\    /   /\\/\\  /\\/\\\r\n"
-									+ "          /  \\    //_\\       \\    /\\    \\  /\\/\\/    \\/    \\\r\n"
-									+ "   /\\    / /\\/\\  //___\\       \\__/  \\    \\/\r\n"
-									+ "  /  \\  /\\/    \\//_____\\       \\ |[]|     \\\r\n"
-									+ " /\\/\\/\\/       //_______\\       \\|__|      \\\r\n"
-									+ "/      \\      /XXXXXXXXXX\\                  \\\r\n"
-									+ "        \\    /_I_II  I__I_\\__________________\\\r\n"
-									+ "               I_I|  I__I_____[]_|_[]_____I\r\n"
-									+ "               I_II  I__I_____[]_|_[]_____I\r\n"
-									+ "               I II__I  I     XXXXXXX     I\r\n"
-									+ "            ~~~~~\"   \"~~~~~~~~~~~~~~~~~~~~~~~~\n");
-						} else {
-							
-							//Dibujo posada 3.
-							System.out.println(""
-									+ "    ) )        /\\\r\n"
-									+ "   =====      /  \\\r\n"
-									+ "  _|___|_____/ __ \\____________\r\n"
-									+ " |::::::::::/ |  | \\:::::::::::|\r\n"
-									+ " |:::::::::/  ====  \\::::::::::|\r\n"
-									+ " |::::::::/__________\\:::::::::|\r\n"
-									+ " |_________|  ____  |__________|\r\n"
-									+ "  | ______ | / || \\ | _______ |\r\n"
-									+ "  ||  |   || ====== ||   |   ||\r\n"
-									+ "  ||--+---|| |    | ||---+---||\r\n"
-									+ "  ||__|___|| |   o| ||___|___||\r\n"
-									+ "  |========| |____| |=========|\r\n"
-									+ " (^^-^^^^^-|________|-^^^--^^^)\r\n"
-									+ " (,, , ,, ,/________\\,,,, ,, ,)\r\n"
-									+ "','',,,,' /__________\\,,,',',;;\n");
-						}
-						
-						
-						System.out.println("Casilla n� [19]: Posada, [" + castic[i] + "] rondas sin tirar.");
+						System.out.println("Casilla nº [19]: Posada, [" + castic[i] + "] rondas sin tirar.");
 						text = "Te estancas en";
 						break;
 					}
@@ -763,41 +269,10 @@ public class Juego_Oca {
 					else if (posicioDelsJugadors[i] == 31) {
 						castic[i] = 2;
 						
-						//Dibujo pozo.
-						System.out.println(""
-									+ "                 __\r\n"
-									+ "               .'/\\'.\r\n"
-									+ "             .'-/__\\-'.\r\n"
-									+ "           .'--/____\\--'.\r\n"
-									+ "         .'--./______\\.--'.\r\n"
-									+ "       .'--../________\\..--'.\r\n"
-									+ "     .'--.._/__________\\_..--'.\r\n"
-									+ "   .'--..__/____________\\__..--'.\r\n"
-									+ " .'--..___/______________\\___..--'.\r\n"
-									+ "'========'================'========'\r\n"
-									+ "      [_|__]            [_|__]\r\n"
-									+ "     =[__|_]=====\"\"=====[__|_]==.\r\n"
-									+ "      [_|__]     '|     [_|__]  |\r\n"
-									+ "      [__|_]     |'     [__|_]  |\r\n"
-									+ "      [_|__]  .--JL--.  [_|__]  '===O\r\n"
-									+ "      [__|_]   \\====/   [__|_]\r\n"
-									+ "      [_|__]_.-| .; |-._[_|__]\r\n"
-									+ "      [__|_]'._ \\__/(_.'[__|_]\r\n"
-									+ "      [.-._]            [_.-.]\r\n"
-									+ "      [_.-.'--..____..--'.-._]\r\n"
-									+ " (o)  [(_.'   .-.     .-.'._)\\ (o)\r\n"
-									+ "(\\'/) [  .-. (_.'.-. (_.' .-.](\\'/)\r\n"
-									+ "   ;: [ (_.'.-. (_.' .-. (_.'| ;:'\r\n"
-									+ ";:    [ .-. '._) .-. '._).-. ]   ;:.\r\n"
-									+ "      [(_.'  .-. '._) .-.'._)]\r\n"
-									+ "  (o) /.-.  (_.'.-.  (_.' .-.];:(o)\r\n"
-									+ " (\\'/)['._).-. (_.'   .-.(_.'] (\\'/)\r\n"
-									+ "      [   (_.'.-.  .-.'._)   \\ ;:\r\n"
-									+ ";:'   '-._    '._) '._)   _.-'\r\n"
-									+ "          `---..____..---'   ;:`\r\n"
-									+ "   ;:'      ;:'.:;     ;;\"\n");
+						pozo();
+						
 					
-						System.out.println("Casilla n� [31]: Pozo, [" + castic[i] + "] rondas sin tirar a menos que un jugador tambi�n caiga.");
+						System.out.println("Casilla nº [31]: Pozo, [" + castic[i] + "] rondas sin tirar a menos que un jugador también caiga.");
 						esticAlPou[i] = true;
 
 						for (z = 0; z < esticAlPou.length; z++) {
@@ -817,128 +292,19 @@ public class Juego_Oca {
 						posicioDelsJugadors[i] = 39;
 						text = "Retrocedes";
 						
-						//Numero aleatorio
-						random = (int) (Math.random() * 2 + 1);
+						laberintos();						
 						
-						//Dibujo que saldr�
-						if (random == 1) {
-							
-							//Dibujo laberinto 1.
-							System.out.println(""
-									+ "	.--.--.--.  .--.--.\r\n"
-									+ "	|     |        |  |\r\n"
-									+ "	:  :--:  :  :  :  :\r\n"
-									+ "	|  |     |  |     |\r\n"
-									+ "	:  :  :  :--:--:--:\r\n"
-									+ "	|  |  |           |\r\n"
-									+ "	:  :  :--:--:--:  :\r\n"
-									+ "	|  |        |  |  |\r\n"
-									+ "	:  :--:--:  :  :  :\r\n"
-									+ "	|     |     |  |  |\r\n"
-									+ "	:--:  :  :--:  :  :\r\n"
-									+ "	|        |        |\r\n"
-									+ "	:  :--:--:--:--:--:\n");
-						} else {
-							
-							//Dibujo dados 2.
-							System.out.println(
-								  "___________________________________  \r\n"
-								+ "| _____ |   | ___ | ___ ___ | |   | |\r\n"
-								+ "| |   | |_| |__ | |_| __|____ | | | |\r\n"
-								+ "| | | |_________|__ |______ |___|_| |\r\n"
-								+ "| |_|   | _______ |______ |   | ____|\r\n"
-								+ "| ___ | |____ | |______ | |_| |____ |\r\n"
-								+ "|___|_|____ | |   ___ | |________ | |\r\n"
-								+ "|   ________| | |__ | |______ | | | |\r\n"
-								+ "| | | ________| | __|____ | | | __| |\r\n"
-								+ "|_| |__ |   | __|__ | ____| | |_| __|\r\n"
-								+ "|   ____| | |____ | |__ |   |__ |__ |\r\n"
-								+ "| |_______|_______|___|___|___|_____|  \n");
-						}
-						
-						System.out.println("Casilla n� [42]: Laberinto. Vuelves a la posici�n [" + posicioDelsJugadors[i] + "], {" + nomDelsJugadors[i] + "}.");
+						System.out.println("Casilla nº [42]: Laberinto. Vuelves a la posición [" + posicioDelsJugadors[i] + "], {" + nomDelsJugadors[i] + "}.");
 						break;
 					}
 
-					//------------------------------------------------------------ P R I S I � N ------------------------------------------------------------
+					//------------------------------------------------------------ P R I S I Ó N ------------------------------------------------------------
 					else if (posicioDelsJugadors[i] == 52) {
 						castic[i] = 3;
 						
-						//Numero aleatorio
-						random = (int) (Math.random() * 3 + 1);
+						carcel();						
 						
-						//Dibujo que saldr�
-						if (random == 1) {
-							
-							//Dibujo prisi�n 1.
-							System.out.println(""
-									+ "                       _    __    __    __    __    _\r\n"
-									+ "                      | |__|__|__|__|__|__|__|__|__|_|\r\n"
-									+ " __    __    __       |_|___|___|___|___|___|___|___||       __    __    __\r\n"
-									+ "|__|  |__|  |__|      |___|___|___|___|___|___|___|__|      |__|  |__|  |__|\r\n"
-									+ "|__|__|__|__|__|       \\____________________________/       |__|__|__|__|__|\r\n"
-									+ "|_|___|___|___||        |_|___|___|___|___|___|___||        |_|___|___|___||\r\n"
-									+ "|___|___|___|__|        |___|___|___|___|___|___|__|        |___|___|___|__|\r\n"
-									+ " \\_|__|__|___|/          \\________________________/          \\_|__|__|__|_/\r\n"
-									+ "  \\__|____|__/            |___|___|___|___|___|__|            \\__|__|__|_/\r\n"
-									+ "   |||_|_|_||             |_|___|___|___|___|__|_|             |_|_|_|_||\r\n"
-									+ "   ||_|_|||_|__    __    _| _  __ |_ __  _ __  _ |_    __    __||_|_|_|_|\r\n"
-									+ "   |_|_|_|_||__|__|__|__|__|__|__|__|__|__|__|__|__|__|__|__|__|_|_|_|_||\r\n"
-									+ "   ||_|||_|||___|___|___|___|___|___|___|___|___|___|___|___|__||_|_|_|_|\r\n"
-									+ "   |_|_|_|_||_|___|___|___|___|___|___|___|___|___|___|___|___||_|_|_|_||\r\n"
-									+ "   ||_|_|_|_|___|___|___|___|___|___|___|___|___|___|___|___|__||_|_|_|_|\r\n"
-									+ "   |_|||_|_||_|___|___|___|___|___|___|___|___|___|___|___|___||_|_|_|_||\r\n"
-									+ "   ||_|_|_|_|___|___|___|___|___|_/| | | \\__|___|___|___|___|__||_|_|_|_|\r\n"
-									+ "   |_|_|_|_||_|___|___|___|___|__/ | | | |\\___|___|___|___|___||_|_|_|_||\r\n"
-									+ "   ||_|_|_|||___|___|___|___|___|| | | | | |____|___|___|___|__||_|_|_|_|\r\n"
-									+ "   |_|_|_|_||_|___|___|___|___|_|| | | | | |__|___|___|___|___||_|_|_|_||\r\n"
-									+ "  /___|___|__\\__|___|___|___|___|| | | | | |____|___|___|___|_/_|___|__|_\\\r\n"
-									+ " |_|_|_|_|_|_||___|___|___|___|_|| | | | | |__|___|___|___|__|_|__|__|__|_|\r\n"
-									+ " ||_|_|_|_|_|_|_|___|___|___|___||_|_|_|_|_|____|___|___|____|___|__|__|__|\n");
-						} else if (random == 2) {
-							
-							//Dibujo prisi�n 2.
-							System.out.println(""
-									+ "                                  ]=I==II==I=[\r\n"
-									+ "                                   \\\\__||__//                 ]=I==II==I=[\r\n"
-									+ "              ]=I==II==I=[          |.. ` *|                   \\\\__||__//\r\n"
-									+ "               \\\\__||__//           |. /\\ #|                    |-_ []#|\r\n"
-									+ "                | []   |            |  ## *|                    |      |\r\n"
-									+ "                |    ..|            | . , #|                  ]=I==II==I=[\r\n"
-									+ "___   ____  ___ |   .. |         __ |..__.*| __                \\\\__||__//\r\n"
-									+ "] I---I  I--I [ |..    |        |  ||_|  |_|| |                 |    _*|\r\n"
-									+ "]_____________[ | .. []|         \\--\\-|-|--/-//                 |   _ #|\r\n"
-									+ " \\_\\| |_| |/_/  |_   _ | _   _   _|      ' *|                   |`    *|\r\n"
-									+ "  |  .     |'-'-` '-` '-` '-` '-` | []     #|-|--|-_-_-_-_ _ _ _|_'   #|\r\n"
-									+ "  |     '  |=-=-=-=-=-=-=-=-=-=-=-|      []*|-----________` ` `   ]   *|\r\n"
-									+ "  |  ` ` []|      _-_-_-_-_  '    |-       #|      ,    ' ```````['  _#|\r\n"
-									+ "  | '  `  '|   [] | | | | |  []`  |  []    *|   `          . `   |'  I*|\r\n"
-									+ "  |      - |    ` | | | | | `     | ;  '   #|     .  |        '  |    #|\r\n"
-									+ " /_'_-_-___-\\__,__|_|_|_|_|_______|   `  , *|    _______+___,__,-/._.._.\\\r\n"
-									+ "             _,--'    __,-'      /,_,_v_Y_,_v\\\\-' \n");
-						} else {
-							
-							//Dibujo prisi�n 3.
-							System.out.println(
-								  "	____________________\r\n"
-								+ "	_]|  |  |  |  |  |[_\r\n"
-								+ "	_]|==|==|==|==|==|[_\r\n"
-								+ "	_]|_ _  |  |  |  |[_\r\n"
-								+ "	_]|_|_[ |  |  |  |[_\r\n"
-								+ "	_]|_|_[ |  |  |  |[_\r\n"
-								+ "	_]|  |  |  |  |  |[_\r\n"
-								+ "	_]|  |  |  |  |  |[_\r\n"
-								+ "	_]|==|==|==|==|==|[_\r\n"
-								+ "	_]|  |  |.-|--|  |[_\r\n"
-								+ "	_]|  |  | `.  |  |[_\r\n"
-								+ "	_]|  |  |  |`.|  |[_\r\n"
-								+ "	_]|  |  |  |  |`.|[_\r\n"
-								+ "	_]|  |  |  |  |  |[_\r\n"
-								+ "	_]|==|==|==|==|==|[_\r\n"
-								+ "	_]|__|__|__|__|__|[_  \n");
-						}
-						
-						System.out.println("Casilla n� [52]: Prisi�n, est�s [" + castic[i] + "] turnos sin tirar, {" + nomDelsJugadors[i] + "}.");
+						System.out.println("Casilla nº [52]: Prisión, estás [" + castic[i] + "] turnos sin tirar, {" + nomDelsJugadors[i] + "}.");
 						text = "Te estancas en";
 						break;
 					}
@@ -948,166 +314,14 @@ public class Juego_Oca {
 						posicioDelsJugadors[i] = 0;
 						text = "Retrocedes";
 						
-						//Numero aleatorio
-						random = (int) (Math.random() * 4 + 1);
+						muerte();
 						
-						//Dibujo que saldr�
-						if (random == 1) {
-							
-							//Dibujo muerte 1.
-							System.out.println(
-								  "           _..--\"\"---.\r\n"
-								+ "          /           \".\r\n"
-								+ "          `            l\r\n"
-								+ "          |'._  ,._ l/\"\\\r\n"
-								+ "          |  _J<__/.v._/\r\n"
-								+ "           \\( ,~._,,,,-)\r\n"
-								+ "            `-\\' \\`,,j|\r\n"
-								+ "               \\_,____J\r\n"
-								+ "          .--.__)--(__.--.\r\n"
-								+ "         /  `-----..--'. j\r\n"
-								+ "         '.- '`--` `--' \\\\\r\n"
-								+ "        //  '`---'`  `-' \\\\\r\n"
-								+ "       //   '`----'`.-.-' \\\\\r\n"
-								+ "     _//     `--- -'   \\' | \\________\r\n"
-								+ "    |  |         ) (      `.__.---- -'\\\r\n"
-								+ "     \\7          \\`-(               74\\\\\\\r\n"
-								+ "     ||       _  /`-(               l|//7__\r\n"
-								+ "     |l    ('  `-)-/_.--.          f''` -.-\"|\r\n"
-								+ "     |\\     l\\_  `-'    .'         |     |  |\r\n"
-								+ "     llJ   _ _)J--._.-('           |     |  l\r\n"
-								+ "     |||( ( '_)_  .l   \". _    ..__I     |  L\r\n"
-								+ "     ^\\\\\\||`'   \"   '\"-. \" )''`'---'     L.-'`-.._\r\n"
-								+ "          \\ |           ) /.              ``'`-.._``-.\r\n"
-								+ "          l l          / / |                      |''|\r\n"
-								+ "           \" \\        / /   \"-..__                |  |\r\n"
-								+ "           | |       / /          1       ,- t-...J_.'\r\n"
-								+ "           | |      / /           |       |  |\r\n"
-								+ "           J  \\  /\"  (            l       |  |\r\n"
-								+ "           | ().'`-()/            |       |  |\r\n"
-								+ "          _.-\"_.____/             l       l.-l\r\n"
-								+ "      _.-\"_.+\"|                  /        \\.  \\\r\n"
-								+ "/\"\\.-\"_.-\"  | |                 /          \\   \\\r\n"
-								+ "\\_   \"      | |                1            | `'|\r\n"
-								+ "  |ll       | |                |            i   |\r\n"
-								+ "  \\\\\\       |-\\               \\j ..          L,,'. `/\r\n"
-								+ " __\\\\\\     ( .-\\           .--'    ``--../..'      '-..\r\n"
-								+ "   `'''`----`\\\\\\\\ .....--'''\r\n"
-								+ "              \\\\\\\\                                   ''");
-						} else if (random == 2) {
-							
-							//Dibujo muerte 2.
-							System.out.println(""
-									+ "                      :::!~!!!!!:.\r\n"
-									+ "                  .xUHWH!! !!?M88WHX:.\r\n"
-									+ "                .X*#M@$!!  !X!M$$$$$$WWx:.\r\n"
-									+ "               :!!!!!!?H! :!$!$$$$$$$$$$8X:\r\n"
-									+ "              !!~  ~:~!! :~!$!#$$$$$$$$$$8X:\r\n"
-									+ "             :!~::!H!<   ~.U$X!?R$$$$$$$$MM!\r\n"
-									+ "             ~!~!!!!~~ .:XW$$$U!!?$$$$$$RMM!\r\n"
-									+ "               !:~~~ .:!M\"T#$$$$WX??#MRRMMM!\r\n"
-									+ "               ~?WuxiW*`   `\"#$$$$8!!!!??!!!\r\n"
-									+ "             :X- M$$$$       `\"T#$T~!8$WUXU~\r\n"
-									+ "            :%`  ~#$$$m:        ~!~ ?$$$$$$\r\n"
-									+ "          :!`.-   ~T$$$$8xx.  .xWW- ~\"\"##*\"\r\n"
-									+ ".....   -~~:<` !    ~?T#$$@@W@*?$$      /`\r\n"
-									+ "W$@@M!!! .!~~ !!     .:XUW$W!~ `\"~:    :\r\n"
-									+ "#\"~~`.:x%`!!  !H:   !WM$$$$Ti.: .!WUn+!`\r\n"
-									+ ":::~:!!`:X~ .: ?H.!u \"$$$B$$$!W:U!T$$M~\r\n"
-									+ ".~~   :X@!.-~   ?@WTWo(\"*$$$W$TH$! `\r\n"
-									+ "Wi.~!X$?!-~    : ?$$$B$Wu(\"**$RM!\r\n"
-									+ "$R@i.~~ !     :   ~$$$$$B$$en:``\r\n"
-									+ "?MXT@Wx.~    :     ~\"##*$$$$M~\n");
-						} else if (random == 3) {
-							
-							//Dibujo muerte 3.
-							System.out.println(""
-									+ "                 uuuuuuu\r\n"
-									+ "             uu$$$$$$$$$$$uu\r\n"
-									+ "          uu$$$$$$$$$$$$$$$$$uu\r\n"
-									+ "         u$$$$$$$$$$$$$$$$$$$$$u\r\n"
-									+ "        u$$$$$$$$$$$$$$$$$$$$$$$u\r\n"
-									+ "       u$$$$$$$$$$$$$$$$$$$$$$$$$u\r\n"
-									+ "       u$$$$$$$$$$$$$$$$$$$$$$$$$u\r\n"
-									+ "       u$$$$$$\"   \"$$$\"   \"$$$$$$u\r\n"
-									+ "       \"$$$$\"      u$u       $$$$\"\r\n"
-									+ "        $$$u       u$u       u$$$\r\n"
-									+ "        $$$u      u$$$u      u$$$\r\n"
-									+ "         \"$$$$uu$$$   $$$uu$$$$\"\r\n"
-									+ "          \"$$$$$$$\"   \"$$$$$$$\"\r\n"
-									+ "            u$$$$$$$u$$$$$$$u\r\n"
-									+ "             u$\"$\"$\"$\"$\"$\"$u\r\n"
-									+ "  uuu        $$u$ $ $ $ $u$$       uuu\r\n"
-									+ " u$$$$        $$$$$u$u$u$$$       u$$$$\r\n"
-									+ "  $$$$$uu      \"$$$$$$$$$\"     uu$$$$$$\r\n"
-									+ "u$$$$$$$$$$$uu    \"\"\"\"\"    uuuu$$$$$$$$$$\r\n"
-									+ "$$$$\"\"\"$$$$$$$$$$uuu   uu$$$$$$$$$\"\"\"$$$\"\r\n"
-									+ " \"\"\"      \"\"$$$$$$$$$$$uu \"\"$\"\"\"\r\n"
-									+ "           uuuu \"\"$$$$$$$$$$uuu\r\n"
-									+ "  u$$$uuu$$$$$$$$$uu \"\"$$$$$$$$$$$uuu$$$\r\n"
-									+ "  $$$$$$$$$$\"\"\"\"           \"\"$$$$$$$$$$$\"\r\n"
-									+ "   \"$$$$$\"                      \"\"$$$$\"\"\r\n"
-									+ "     $$$\"                         $$$$\"\n");
-						} else {
-							
-							//Dibujo muerte 4.
-							System.out.println(""
-									+ "                       uuuuuuuuuuuuuuuuuuuuu.\r\n"
-									+ "                   .u$$$$$$$$$$$$$$$$$$$$$$$$$$W.\r\n"
-									+ "                 u$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$Wu.\r\n"
-									+ "               $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$i\r\n"
-									+ "              $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n"
-									+ "         `    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n"
-									+ "           .i$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$i\r\n"
-									+ "           $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$W\r\n"
-									+ "          .$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$W\r\n"
-									+ "         .$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$i\r\n"
-									+ "         #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$.\r\n"
-									+ "         W$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n"
-									+ "$u       #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$~\r\n"
-									+ "$#      `\"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n"
-									+ "$i        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n"
-									+ "$$        #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n"
-									+ "$$         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n"
-									+ "#$.        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#\r\n"
-									+ " $$      $iW$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$!\r\n"
-									+ " $$i      $$$$$$$#\"\" `\"\"\"#$$$$$$$$$$$$$$$$$#\"\"\"\"\"\"#$$$$$$$$$$$$$$$W\r\n"
-									+ " #$$W    `$$$#\"            \"       !$$$$$`           `\"#$$$$$$$$$$#\r\n"
-									+ "  $$$     ``                 ! !iuW$$$$$                 #$$$$$$$#\r\n"
-									+ "  #$$    $u                  $   $$$$$$$                  $$$$$$$~\r\n"
-									+ "   \"#    #$$i.               #   $$$$$$$.                 `$$$$$$\r\n"
-									+ "          $$$$$i.                \"\"\"#$$$$i.               .$$$$#\r\n"
-									+ "          $$$$$$$$!         .   `    $$$$$$$$$i           $$$$$\r\n"
-									+ "          `$$$$$  $iWW   .uW`        #$$$$$$$$$W.       .$$$$$$#\r\n"
-									+ "            \"#$$$$$$$$$$$$#`          $$$$$$$$$$$iWiuuuW$$$$$$$$W\r\n"
-									+ "               !#\"\"    \"\"             `$$$$$$$##$$$$$$$$$$$$$$$$\r\n"
-									+ "          i$$$$    .                   !$$$$$$ .$$$$$$$$$$$$$$$#\r\n"
-									+ "         $$$$$$$$$$`                    $$$$$$$$$Wi$$$$$$#\"#$$`\r\n"
-									+ "         #$$$$$$$$$W.                   $$$$$$$$$$$#   ``\r\n"
-									+ "          `$$$$##$$$$!       i$u.  $. .i$$$$$$$$$#\"\"\r\n"
-									+ "             \"     `#W       $$$$$$$$$$$$$$$$$$$`      u$#\r\n"
-									+ "                            W$$$$$$$$$$$$$$$$$$      $$$$W\r\n"
-									+ "                            $$`!$$$##$$$$``$$$$      $$$$!\r\n"
-									+ "                           i$\" $$$$  $$#\"`  \"\"\"     W$$$$\r\n"
-									+ "                                                   W$$$$!\r\n"
-									+ "                      uW$$  uu  uu.  $$$  $$$Wu#   $$$$$$\r\n"
-									+ "                     ~$$$$iu$$iu$$$uW$$! $$$$$$i .W$$$$$$\r\n"
-									+ "             ..  !   \"#$$$$$$$$$$##$$$$$$$$$$$$$$$$$$$$#\"\r\n"
-									+ "             $$W  $     \"#$$$$$$$iW$$$$$$$$$$$$$$$$$$$$$W\r\n"
-									+ "             $#`   `       \"\"#$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n"
-									+ "                              !$$$$$$$$$$$$$$$$$$$$$#`\r\n"
-									+ "                              $$$$$$$$$$$$$$$$$$$$$$!\r\n"
-									+ "                            $$$$$$$$$$$$$$$$$$$$$$$`\r\n"
-									+ "                             $$$$$$$$$$$$$$$$$$$$\"\n");
-						
-						}
-						
-						System.out.println("Casilla n� [58]: La muerte, vuelves a la casilla [" + posicioDelsJugadors[i] + "], {" + nomDelsJugadors[i] + "}.");
+						System.out.println("Casilla nº [58]: La muerte, vuelves a la casilla [" + posicioDelsJugadors[i] + "], {" + nomDelsJugadors[i] + "}.");
 						break;
 					}
 				}
 
-				//Imprimir posici� del juador.
+				//Imprimir posición del juador.
 				System.out.println(text + " a la casilla [" + posicioDelsJugadors[i] + "].");
 				text = "Avanzas";
 			}
@@ -1117,11 +331,11 @@ public class Juego_Oca {
 				if (i == (numeroDeJugadors - 1)) {
 					i = 0;
 					numeroDeRonda ++;
-				}
-				else {
+				} else {
 					i ++;
 				}
 			}
+			
 			tornarTirar = false;
 
 		}
@@ -1130,25 +344,640 @@ public class Juego_Oca {
 			if (posicioDelsJugadors[i] == caselles.length) {
 				System.out.println("\n___________________________________");
 
-				//------------------------------------------------------------ J A R D � N - D E - L A - O C A ------------------------------------------------------------
+				//------------------------------------------------------------ J A R D Í N - D E - L A - O C A ------------------------------------------------------------
 				
-				System.out.println(""
-						+ "             ___     ___\r\n"
-						+ "      ,_    / _,\\   /,_ \\    _,\r\n"
-						+ "      | \\   \\( \\|   |/ )/   / |\r\n"
-						+ "      |  \\_  \\\\       //  _/  |\r\n"
-						+ "      (_   \\_) \\     / ( /   _)\r\n"
-						+ "      (\\_   `   \\   /   `   _/)\r\n"
-						+ "       ,\\   -=~  /   \\  ~=-   /,\r\n"
-						+ "    ~^~^~^~^~^~^~^~^~^~^~^~^~^~^~\n");
-				System.out.println("Casilla n� [63]: Jard�n de la oca\n");
+				victoria();
+				
+				System.out.println("Casilla nº [63]: Jardín de la oca\n");
 				System.out.println("A ganado el jugador [" + (i + 1) + "] a la ronda [" + numeroDeRonda + "] con [" + contadorTirades[i] + "] tiradas, {" + nomDelsJugadors[i] + "}.\n___________________________________");
 			}
 			
-		}
+		}		
 		
-		
-
 	}
 
+	public void dados() {
+		
+		int aleatorio = generar_numero_aleatorio(0, 10);
+		
+		if (aleatorio < 5) {
+			
+			System.out.println(
+					 
+					  "       .-------.    ______\r\n"						
+					+ "      /   o   /|   /\\     \\\r\n"				
+					+ "     /_______/o|  /o \\  o  \\\r\n"					
+					+ "     | o     | | /   o\\_____\\\r\n"						
+					+ "     |   o   |o/ \\o   /o    /\r\n"						
+					+ "     |     o |/   \\ o/  o  /\r\n"					
+					+ "     '-------'     \\/____o/\n");	
+			
+		} else {
+			
+			System.out.println(""
+					
+				+ "               (( _______\r\n"
+				+ "     _______     /\\O    O\\\r\n"
+				+ "    /O     /\\   /  \\      \\\r\n"
+				+ "   /   O  /O \\ / O  \\O____O\\ ))\r\n"
+				+ "((/_____O/    \\\\    /O     /\r\n"
+				+ "  \\O    O\\    / \\  /   O  /\r\n"
+				+ "   \\O    O\\ O/   \\/_____O/\r\n"
+				+ "    \\O____O\\/ ))          ))\r\n"
+				+ "  ((");
+			
+		}
+		
+	}
+	
+	public void ocas() {
+		
+		int aleatorio = generar_numero_aleatorio(0, 5);
+		
+		if (aleatorio == 0) {
+		
+			System.out.println(""
+					+ "	  _      _      _\r\n"
+					+ "	>(.)__ <(.)__ =(.)__\r\n"
+					+ "	 (___/  (___/  (___/  \n");
+			
+		} else if (aleatorio == 1) {
+		
+			System.out.println(""
+					+ "                 ,-.\r\n"
+					+ "         ,      ( {o\\\r\n"
+					+ "         {`\"=,___) (`~\r\n"
+					+ "          \\  ,_.-   )\r\n"
+					+ "  ~^~^~^`- ~^ ~^ '~^~^~^~\n");
+		} else if (aleatorio == 2) {
+		
+			System.out.println(""
+					+ "                                    _\r\n"
+					+ "                                ,-\"\" \"\".\r\n"
+					+ "                              ,'  ____  `.\r\n"
+					+ "                            ,'  ,'    `.  `._\r\n"
+					+ "   (`.         _..--.._   ,'  ,'        \\    \\\r\n"
+					+ "  (`-.\\    .-\"\"        \"\"'   /          (  d _b\r\n"
+					+ " (`._  `-\"\" ,._             (            `-(   \\\r\n"
+					+ " <_  `     (  <`<            \\              `-._\\\r\n"
+					+ "  <`-       (__< <           :\r\n"
+					+ "   (__        (_<_<          ;\r\n"
+					+ "    `--------------------------\n");
+		} else if (aleatorio == 3) {
+		
+			System.out.println(""
+
+					+ "                                   ___\r\n"						
+					+ "                               ,-\"\"   `.\r\n"
+					+ "                             ,'  _   e )`-._\r\n"
+					+ "                            /  ,' `-._<.===-'\r\n"
+					+ "                           /  /\r\n"
+					+ "                          /  ;\r\n"
+					+ "              _          /   ;\r\n"
+					+ " (`._    _.-\"\" \"\"--..__,'    |\r\n"
+					+ " <_  `-\"\"                     \\\r\n"
+					+ "  <`-                          :\r\n"
+					+ "   (__   <__.                  ;\r\n"
+					+ "     `-.   '-.__.      _.'    /\r\n"
+					+ "        \\      `-.__,-'    _,'\r\n"
+					+ "         `._    ,    /__,-'\r\n"
+					+ "            \"\"._\\__,'< <____\r\n"
+					+ "                 | |  `----.`.\r\n"
+					+ "                 | |        \\ `.\r\n"
+					+ "                 ; |___      \\-``\r\n"
+					+ "                 \\   --<\r\n"
+					+ "                  `.`.<\r\n"
+					+ "                    `-'\r\n"
+					+ "");	
+		} else if (aleatorio == 4) {
+		
+			System.out.println(""
+					+ "      ,;MMMM..\r\n"
+					+ "   ,;:MM\"MMMMM.\r\n"
+					+ ",;.MM::M.MMMMMM:\r\n"
+					+ "\"\"::.;'MMMMMMMMM\r\n"
+					+ "       \"'\"\"MMMMM;\r\n"
+					+ "           ':MMMM.\r\n"
+					+ "            'MMMM;\r\n"
+					+ "             :MMMM;.\r\n"
+					+ "              MMMMMM;...\r\n"
+					+ "              MMMMMMMMMMMMM;.;..\r\n"
+					+ "              MMMMMMMMMMMMMMMMMMM...\r\n"
+					+ "              MMMMMM:MMMMMMMMMMMMMMM;...       ..:\r\n"
+					+ "              MMMMMM;MMMMMMMMMMMMM:MMMMMMM:MMMM:M\r\n"
+					+ "              :MMMMMM:MMMMMMMMMMMMMMM.:::;:::;;:'\r\n"
+					+ "              ':MMMMMMM:MMMM:;MM:M;.MMM:';::M:'\r\n"
+					+ "               ':MMMMMM;M;;MM;::M;;::::;MM:\"\"\r\n"
+					+ "                 'MMMMMMMM;M;:::MMMMMMMMMM\"\r\n"
+					+ "                  ''MMMMMMMMMMMMMMMMMMMMM\"\r\n"
+					+ "                     ':MMMMMMMMMMMMMMMM\"'\r\n"
+					+ "                       '':MMMMMMMMMMM\"'\r\n"
+					+ "                          ':MMMMMM\"\"'\r\n"
+					+ "                             .\r\n"
+					+ "                             :\r\n"
+					+ "                            ::\r\n"
+					+ "                       ,..;.M'\r\n"
+					+ "                      ,;;MM:'\r\n"
+					+ "                        '\"'");
+		} else {
+				
+			System.out.println(""
+					+ "                                                        _...--.\r\n"
+					+ "                                        _____......----'     .'\r\n"
+					+ "                                  _..-''                   .'\r\n"
+					+ "                                .'                       ./\r\n"
+					+ "                        _.--._.'                       .' |\r\n"
+					+ "                     .-'                           .-.'  /\r\n"
+					+ "                   .'   _.-.                     .  \\   '\r\n"
+					+ "                 .'  .'   .'    _    .-.        / `./  :\r\n"
+					+ "               .'  .'   .'  .--' `.  |  \\  |`. |     .'\r\n"
+					+ "            _.'  .'   .' `.'       `-'   \\ / |.'   .'\r\n"
+					+ "         _.'  .-'   .'     `-.            `      .'\r\n"
+					+ "       .'   .'    .'          `-.._ _ _ _ .-.    :\r\n"
+					+ "      /    /o _.-'               .--'   .'   \\   |\r\n"
+					+ "    .'-.__..-'                  /..    .`    / .'\r\n"
+					+ "  .'   . '                       /.'/.'     /  |\r\n"
+					+ " `---'                                   _.'   '\r\n"
+					+ "                                       /.'    .'\r\n"
+					+ "                                        /.'/.'\r\n"
+					+ "");
+		}
+	
+	}
+	
+	public void puentes() {
+		
+		int aleatorio = generar_numero_aleatorio(0, 2);
+		
+		if (aleatorio == 0) {
+						
+			System.out.println("                           #########                      \r\n"
+				+ "                        ######                            \r\n"
+				+ "                   ___###___________                      \r\n"
+				+ "            _,--\"\"\"_________________\"\"\"--._               \r\n"
+				+ "          /',--'\\\\\"##           __  \"//'--.'\\   ,  /\\    _\r\n"
+				+ "-._  /\\  //'   ##\\\\       ,-_,-'  \\_///\\,-'`\\\\-' \\/  \\,-' \r\n"
+				+ "   \\/  \\//    _  _\\\\ ,-._/         //'       \\\\           \r\n"
+				+ "       //'--._M_|H|\\\\___   ___   _//   ___   _\\\\   ___    \r\n"
+				+ "      | |    (|   | \\\\  | |   | |// | |   | | | | |   |   \r\n"
+				+ "   ___| |   /ooo=oo-o\\\\oo-oo=oo-//=oo-oo=oo-oo| |=oo=oo___\r\n"
+				+ "        \\\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"'\"|           \r\n"
+				+ "         |    \\                           .   /           \r\n"
+				+ "   .      \\   /\\            .  -     '    .  /            \r\n"
+				+ "           `-.  '-..     ' '          ,  ,,-'     `       \r\n"
+				+ "              \\     '- '            ,/,-'/                \r\n"
+				+ "    \\          \\_- ' '             --',-'                 \r\n"
+				+ "              -'                    \\/            |       \r\n"
+				+ "     |  _  -                          - _        .       \r\n"
+				+ "                                                /     ");
+				
+		} else if (aleatorio == 1) {
+		
+			System.out.println(""
+				+ "                             ___....___\r\n"
+				+ "   ^^                __..-:'':__:..:__:'':-..__\r\n"
+				+ "                 _.-:__:.-:'':  :  :  :'':-.:__:-._\r\n"
+				+ "               .':.-:  :  :  :  :  :  :  :  :  :._:'.\r\n"
+				+ "            _ :.':  :  :  :  :  :  :  :  :  :  :  :'.: _\r\n"
+				+ "           [ ]:  :  :  :  :  :  :  :  :  :  :  :  :  :[ ]\r\n"
+				+ "           [ ]:  :  :  :  :  :  :  :  :  :  :  :  :  :[ ]\r\n"
+				+ "  :::::::::[ ]:__:__:__:__:__:__:__:__:__:__:__:__:__:[ ]:::::::::::\r\n"
+				+ "  !!!!!!!!![ ]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!![ ]!!!!!!!!!!!\r\n"
+				+ "  ^^^^^^^^^[ ]^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[ ]^^^^^^^^^^^\r\n"
+				+ "           [ ]                                        [ ]\r\n"
+				+ "           [ ]                                        [ ]\r\n"
+				+ "           [ ]                                        [ ]\r\n"
+				+ "   ~~^_~^~/   \\~^-~^~ _~^-~_^~-^~_^~~-^~_~^~-~_~-^~_^/   \\~^ ~~_ ^\n");
+			
+		} else {
+		
+			System.out.println(""
+				+ "                                           ^^\r\n"
+				+ "      ^^      ..                                       ..\r\n"
+				+ "              []                                       []\r\n"
+				+ "            .:[]:_          ^^                       ,:[]:.\r\n"
+				+ "          .: :[]: :-.                             ,-: :[]: :.\r\n"
+				+ "        .: : :[]: : :`._                       ,.': : :[]: : :.\r\n"
+				+ "      .: : : :[]: : : : :-._               _,-: : : : :[]: : : :.\r\n"
+				+ "  _..: : : : :[]: : : : : : :-._________.-: : : : : : :[]: : : : :-._\r\n"
+				+ "  _:_:_:_:_:_:[]:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:[]:_:_:_:_:_:_\r\n"
+				+ "  !!!!!!!!!!!![]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!![]!!!!!!!!!!!!!\r\n"
+				+ "  ^^^^^^^^^^^^[]^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[]^^^^^^^^^^^^^\r\n"
+				+ "              []                                       []\r\n"
+				+ "              []                                       []\r\n"
+				+ "              []                                       []\r\n"
+				+ "   ~~^-~^_~^~/  \\~^-~^~_~^-~_^~-^~_^~~-^~_~^~-~_~-^~_^/  \\~^-~_~^-~~-\r\n"
+				+ "  ~ _~~- ~^-^~-^~~- ^~_^-^~~_ -~^_ -~_-~~^- _~~_~-^_ ~^-^~~-_^-~ ~^\r\n"
+				+ "     ~ ^- _~~_-  ~~ _ ~  ^~  - ~~^ _ -  ^~-  ~ _  ~~^  - ~_   - ~^_~\r\n"
+				+ "       ~-  ^_  ~^ -  ^~ _ - ~^~ _   _~^~-  _ ~~^ - _ ~ - _ ~~^ -\r\n"
+				+ "          ~^ -_ ~^^ -_ ~ _ - _ ~^~-  _~ -_   ~- _ ~^ _ -  ~ ^-\r\n"
+				+ "              ~^~ - _ ^ - ~~~ _ - _ ~-^ ~ __- ~_ - ~  ~^_-\r\n"
+				+ "                  ~ ~- ^~ -  ~^ -  ~ ^~ - ~~  ^~ - ~\n");
+			
+		}		
+		
+	}
+	
+	public void posadas() {
+		
+		int aleatorio = generar_numero_aleatorio(0, 2);
+		
+		if (aleatorio == 0) {
+			
+			System.out.println(
+				  "                          \r\n"
+				+ "                      _II_\r\n"
+				+ "                      [__] \r\n"
+				+ "    __________________|  |___\r\n"
+				+ "   /^^^^^^,-.^^^^^^^^\\|__|^^^\\\r\n"
+				+ "  /     ,',-.`.               \\\r\n"
+				+ " /    ,','   `.`.     ,-\"\"\"-.  \\\r\n"
+				+ "/___,','__   __`.`.__/_,\"T\"._\\__\\\r\n"
+				+ " |='-'||/\\| |^^||`-`=|_|_|_|_|=|\r\n"
+				+ " |= = ||)(| |__||= ==|_|_|_|_|=|\r\n"
+				+ " |= ==|\"\"\"\" \"\"\"\"| = =____= =_==|\r\n"
+				+ " |== =| __   __ |= =| [] | |^|=|\r\n"
+				+ " |= ==||/\\| |==||== |   o|=|_| |\r\n"
+				+ " |== =||)(| |  || = | == | == =|\r\n"
+				+ " |= ==|\"\"\"\" \"\"\"\"|== |____|= = =| \r\n"
+				+ " \"\"\"\"\"|_________|\"\"\"'====`\"\"\"\"\"\"\n");
+		
+		} else if (aleatorio == 1) {
+			
+			System.out.println(""
+					+ "                           (   )\r\n"
+					+ "                          (    )\r\n"
+					+ "                           (    )\r\n"
+					+ "                          (    )\r\n"
+					+ "                            )  )\r\n"
+					+ "                           (  (                  /\\\r\n"
+					+ "                            (_)                 /  \\  /\\\r\n"
+					+ "                    ________[_]________      /\\/    \\/  \\\r\n"
+					+ "           /\\      /\\        ______    \\    /   /\\/\\  /\\/\\\r\n"
+					+ "          /  \\    //_\\       \\    /\\    \\  /\\/\\/    \\/    \\\r\n"
+					+ "   /\\    / /\\/\\  //___\\       \\__/  \\    \\/\r\n"
+					+ "  /  \\  /\\/    \\//_____\\       \\ |[]|     \\\r\n"
+					+ " /\\/\\/\\/       //_______\\       \\|__|      \\\r\n"
+					+ "/      \\      /XXXXXXXXXX\\                  \\\r\n"
+					+ "        \\    /_I_II  I__I_\\__________________\\\r\n"
+					+ "               I_I|  I__I_____[]_|_[]_____I\r\n"
+					+ "               I_II  I__I_____[]_|_[]_____I\r\n"
+					+ "               I II__I  I     XXXXXXX     I\r\n"
+					+ "            ~~~~~\"   \"~~~~~~~~~~~~~~~~~~~~~~~~\n");
+		
+		} else {
+		
+			System.out.println(""
+					+ "    ) )        /\\\r\n"
+					+ "   =====      /  \\\r\n"
+					+ "  _|___|_____/ __ \\____________\r\n"
+					+ " |::::::::::/ |  | \\:::::::::::|\r\n"
+					+ " |:::::::::/  ====  \\::::::::::|\r\n"
+					+ " |::::::::/__________\\:::::::::|\r\n"
+					+ " |_________|  ____  |__________|\r\n"
+					+ "  | ______ | / || \\ | _______ |\r\n"
+					+ "  ||  |   || ====== ||   |   ||\r\n"
+					+ "  ||--+---|| |    | ||---+---||\r\n"
+					+ "  ||__|___|| |   o| ||___|___||\r\n"
+					+ "  |========| |____| |=========|\r\n"
+					+ " (^^-^^^^^-|________|-^^^--^^^)\r\n"
+					+ " (,, , ,, ,/________\\,,,, ,, ,)\r\n"
+					+ "','',,,,' /__________\\,,,',',;;\n");
+		
+		}	
+		
+	}
+										
+	public void pozo() {
+		
+		System.out.println(""
+				+ "                 __\r\n"
+				+ "               .'/\\'.\r\n"
+				+ "             .'-/__\\-'.\r\n"
+				+ "           .'--/____\\--'.\r\n"
+				+ "         .'--./______\\.--'.\r\n"
+				+ "       .'--../________\\..--'.\r\n"
+				+ "     .'--.._/__________\\_..--'.\r\n"
+				+ "   .'--..__/____________\\__..--'.\r\n"
+				+ " .'--..___/______________\\___..--'.\r\n"
+				+ "'========'================'========'\r\n"
+				+ "      [_|__]            [_|__]\r\n"
+				+ "     =[__|_]=====\"\"=====[__|_]==.\r\n"
+				+ "      [_|__]     '|     [_|__]  |\r\n"
+				+ "      [__|_]     |'     [__|_]  |\r\n"
+				+ "      [_|__]  .--JL--.  [_|__]  '===O\r\n"
+				+ "      [__|_]   \\====/   [__|_]\r\n"
+				+ "      [_|__]_.-| .; |-._[_|__]\r\n"
+				+ "      [__|_]'._ \\__/(_.'[__|_]\r\n"
+				+ "      [.-._]            [_.-.]\r\n"
+				+ "      [_.-.'--..____..--'.-._]\r\n"
+				+ " (o)  [(_.'   .-.     .-.'._)\\ (o)\r\n"
+				+ "(\\'/) [  .-. (_.'.-. (_.' .-.](\\'/)\r\n"
+				+ "   ;: [ (_.'.-. (_.' .-. (_.'| ;:'\r\n"
+				+ ";:    [ .-. '._) .-. '._).-. ]   ;:.\r\n"
+				+ "      [(_.'  .-. '._) .-.'._)]\r\n"
+				+ "  (o) /.-.  (_.'.-.  (_.' .-.];:(o)\r\n"
+				+ " (\\'/)['._).-. (_.'   .-.(_.'] (\\'/)\r\n"
+				+ "      [   (_.'.-.  .-.'._)   \\ ;:\r\n"
+				+ ";:'   '-._    '._) '._)   _.-'\r\n"
+				+ "          `---..____..---'   ;:`\r\n"
+				+ "   ;:'      ;:'.:;     ;;\"\n");		
+		
+	}
+	
+	public void laberintos() {
+		
+		int aleatorio = generar_numero_aleatorio(0, 5);
+		
+		if (aleatorio == 0) {
+		
+			System.out.println(""
+				+ "	.--.--.--.  .--.--.\r\n"
+				+ "	|     |        |  |\r\n"
+				+ "	:  :--:  :  :  :  :\r\n"
+				+ "	|  |     |  |     |\r\n"
+				+ "	:  :  :  :--:--:--:\r\n"
+				+ "	|  |  |           |\r\n"
+				+ "	:  :  :--:--:--:  :\r\n"
+				+ "	|  |        |  |  |\r\n"
+				+ "	:  :--:--:  :  :  :\r\n"
+				+ "	|     |     |  |  |\r\n"
+				+ "	:--:  :  :--:  :  :\r\n"
+				+ "	|        |        |\r\n"
+				+ "	:  :--:--:--:--:--:\n");
+			
+		} else {
+		
+			System.out.println(
+				  "___________________________________  \r\n"
+				+ "| _____ |   | ___ | ___ ___ | |   | |\r\n"
+				+ "| |   | |_| |__ | |_| __|____ | | | |\r\n"
+				+ "| | | |_________|__ |______ |___|_| |\r\n"
+				+ "| |_|   | _______ |______ |   | ____|\r\n"
+				+ "| ___ | |____ | |______ | |_| |____ |\r\n"
+				+ "|___|_|____ | |   ___ | |________ | |\r\n"
+				+ "|   ________| | |__ | |______ | | | |\r\n"
+				+ "| | | ________| | __|____ | | | __| |\r\n"
+				+ "|_| |__ |   | __|__ | ____| | |_| __|\r\n"
+				+ "|   ____| | |____ | |__ |   |__ |__ |\r\n"
+				+ "| |_______|_______|___|___|___|_____|  \n");
+			
+		}		
+		
+	}
+				
+	public void carcel() {
+		
+		int aleatorio = generar_numero_aleatorio(0, 5);
+		
+		if (aleatorio == 0) {
+			
+			System.out.println(""
+				+ "                       _    __    __    __    __    _\r\n"
+				+ "                      | |__|__|__|__|__|__|__|__|__|_|\r\n"
+				+ " __    __    __       |_|___|___|___|___|___|___|___||       __    __    __\r\n"
+				+ "|__|  |__|  |__|      |___|___|___|___|___|___|___|__|      |__|  |__|  |__|\r\n"
+				+ "|__|__|__|__|__|       \\____________________________/       |__|__|__|__|__|\r\n"
+				+ "|_|___|___|___||        |_|___|___|___|___|___|___||        |_|___|___|___||\r\n"
+				+ "|___|___|___|__|        |___|___|___|___|___|___|__|        |___|___|___|__|\r\n"
+				+ " \\_|__|__|___|/          \\________________________/          \\_|__|__|__|_/\r\n"
+				+ "  \\__|____|__/            |___|___|___|___|___|__|            \\__|__|__|_/\r\n"
+				+ "   |||_|_|_||             |_|___|___|___|___|__|_|             |_|_|_|_||\r\n"
+				+ "   ||_|_|||_|__    __    _| _  __ |_ __  _ __  _ |_    __    __||_|_|_|_|\r\n"
+				+ "   |_|_|_|_||__|__|__|__|__|__|__|__|__|__|__|__|__|__|__|__|__|_|_|_|_||\r\n"
+				+ "   ||_|||_|||___|___|___|___|___|___|___|___|___|___|___|___|__||_|_|_|_|\r\n"
+				+ "   |_|_|_|_||_|___|___|___|___|___|___|___|___|___|___|___|___||_|_|_|_||\r\n"
+				+ "   ||_|_|_|_|___|___|___|___|___|___|___|___|___|___|___|___|__||_|_|_|_|\r\n"
+				+ "   |_|||_|_||_|___|___|___|___|___|___|___|___|___|___|___|___||_|_|_|_||\r\n"
+				+ "   ||_|_|_|_|___|___|___|___|___|_/| | | \\__|___|___|___|___|__||_|_|_|_|\r\n"
+				+ "   |_|_|_|_||_|___|___|___|___|__/ | | | |\\___|___|___|___|___||_|_|_|_||\r\n"
+				+ "   ||_|_|_|||___|___|___|___|___|| | | | | |____|___|___|___|__||_|_|_|_|\r\n"
+				+ "   |_|_|_|_||_|___|___|___|___|_|| | | | | |__|___|___|___|___||_|_|_|_||\r\n"
+				+ "  /___|___|__\\__|___|___|___|___|| | | | | |____|___|___|___|_/_|___|__|_\\\r\n"
+				+ " |_|_|_|_|_|_||___|___|___|___|_|| | | | | |__|___|___|___|__|_|__|__|__|_|\r\n"
+				+ " ||_|_|_|_|_|_|_|___|___|___|___||_|_|_|_|_|____|___|___|____|___|__|__|__|\n");
+		
+		} else if () {
+		
+			System.out.println(""
+				+ "                                  ]=I==II==I=[\r\n"
+				+ "                                   \\\\__||__//                 ]=I==II==I=[\r\n"
+				+ "              ]=I==II==I=[          |.. ` *|                   \\\\__||__//\r\n"
+				+ "               \\\\__||__//           |. /\\ #|                    |-_ []#|\r\n"
+				+ "                | []   |            |  ## *|                    |      |\r\n"
+				+ "                |    ..|            | . , #|                  ]=I==II==I=[\r\n"
+				+ "___   ____  ___ |   .. |         __ |..__.*| __                \\\\__||__//\r\n"
+				+ "] I---I  I--I [ |..    |        |  ||_|  |_|| |                 |    _*|\r\n"
+				+ "]_____________[ | .. []|         \\--\\-|-|--/-//                 |   _ #|\r\n"
+				+ " \\_\\| |_| |/_/  |_   _ | _   _   _|      ' *|                   |`    *|\r\n"
+				+ "  |  .     |'-'-` '-` '-` '-` '-` | []     #|-|--|-_-_-_-_ _ _ _|_'   #|\r\n"
+				+ "  |     '  |=-=-=-=-=-=-=-=-=-=-=-|      []*|-----________` ` `   ]   *|\r\n"
+				+ "  |  ` ` []|      _-_-_-_-_  '    |-       #|      ,    ' ```````['  _#|\r\n"
+				+ "  | '  `  '|   [] | | | | |  []`  |  []    *|   `          . `   |'  I*|\r\n"
+				+ "  |      - |    ` | | | | | `     | ;  '   #|     .  |        '  |    #|\r\n"
+				+ " /_'_-_-___-\\__,__|_|_|_|_|_______|   `  , *|    _______+___,__,-/._.._.\\\r\n"
+				+ "             _,--'    __,-'      /,_,_v_Y_,_v\\\\-' \n");
+			
+		} else {
+		
+			System.out.println(
+				  "	____________________\r\n"
+				+ "	_]|  |  |  |  |  |[_\r\n"
+				+ "	_]|==|==|==|==|==|[_\r\n"
+				+ "	_]|_ _  |  |  |  |[_\r\n"
+				+ "	_]|_|_[ |  |  |  |[_\r\n"
+				+ "	_]|_|_[ |  |  |  |[_\r\n"
+				+ "	_]|  |  |  |  |  |[_\r\n"
+				+ "	_]|  |  |  |  |  |[_\r\n"
+				+ "	_]|==|==|==|==|==|[_\r\n"
+				+ "	_]|  |  |.-|--|  |[_\r\n"
+				+ "	_]|  |  | `.  |  |[_\r\n"
+				+ "	_]|  |  |  |`.|  |[_\r\n"
+				+ "	_]|  |  |  |  |`.|[_\r\n"
+				+ "	_]|  |  |  |  |  |[_\r\n"
+				+ "	_]|==|==|==|==|==|[_\r\n"
+				+ "	_]|__|__|__|__|__|[_  \n");
+			
+		}	
+		
+	}
+									
+	public void muerte() {
+				
+		int aleatorio = generar_numero_aleatorio(0, 5);
+		
+		if (aleatorio == 0) {
+			
+			System.out.println(
+				  "           _..--\"\"---.\r\n"
+				+ "          /           \".\r\n"
+				+ "          `            l\r\n"
+				+ "          |'._  ,._ l/\"\\\r\n"
+				+ "          |  _J<__/.v._/\r\n"
+				+ "           \\( ,~._,,,,-)\r\n"
+				+ "            `-\\' \\`,,j|\r\n"
+				+ "               \\_,____J\r\n"
+				+ "          .--.__)--(__.--.\r\n"
+				+ "         /  `-----..--'. j\r\n"
+				+ "         '.- '`--` `--' \\\\\r\n"
+				+ "        //  '`---'`  `-' \\\\\r\n"
+				+ "       //   '`----'`.-.-' \\\\\r\n"
+				+ "     _//     `--- -'   \\' | \\________\r\n"
+				+ "    |  |         ) (      `.__.---- -'\\\r\n"
+				+ "     \\7          \\`-(               74\\\\\\\r\n"
+				+ "     ||       _  /`-(               l|//7__\r\n"
+				+ "     |l    ('  `-)-/_.--.          f''` -.-\"|\r\n"
+				+ "     |\\     l\\_  `-'    .'         |     |  |\r\n"
+				+ "     llJ   _ _)J--._.-('           |     |  l\r\n"
+				+ "     |||( ( '_)_  .l   \". _    ..__I     |  L\r\n"
+				+ "     ^\\\\\\||`'   \"   '\"-. \" )''`'---'     L.-'`-.._\r\n"
+				+ "          \\ |           ) /.              ``'`-.._``-.\r\n"
+				+ "          l l          / / |                      |''|\r\n"
+				+ "           \" \\        / /   \"-..__                |  |\r\n"
+				+ "           | |       / /          1       ,- t-...J_.'\r\n"
+				+ "           | |      / /           |       |  |\r\n"
+				+ "           J  \\  /\"  (            l       |  |\r\n"
+				+ "           | ().'`-()/            |       |  |\r\n"
+				+ "          _.-\"_.____/             l       l.-l\r\n"
+				+ "      _.-\"_.+\"|                  /        \\.  \\\r\n"
+				+ "/\"\\.-\"_.-\"  | |                 /          \\   \\\r\n"
+				+ "\\_   \"      | |                1            | `'|\r\n"
+				+ "  |ll       | |                |            i   |\r\n"
+				+ "  \\\\\\       |-\\               \\j ..          L,,'. `/\r\n"
+				+ " __\\\\\\     ( .-\\           .--'    ``--../..'      '-..\r\n"
+				+ "   `'''`----`\\\\\\\\ .....--'''\r\n"
+				+ "              \\\\\\\\                                   ''");
+		
+		} else if (aleatorio == 1) {
+			
+			System.out.println(""
+					+ "                      :::!~!!!!!:.\r\n"
+					+ "                  .xUHWH!! !!?M88WHX:.\r\n"
+					+ "                .X*#M@$!!  !X!M$$$$$$WWx:.\r\n"
+					+ "               :!!!!!!?H! :!$!$$$$$$$$$$8X:\r\n"
+					+ "              !!~  ~:~!! :~!$!#$$$$$$$$$$8X:\r\n"
+					+ "             :!~::!H!<   ~.U$X!?R$$$$$$$$MM!\r\n"
+					+ "             ~!~!!!!~~ .:XW$$$U!!?$$$$$$RMM!\r\n"
+					+ "               !:~~~ .:!M\"T#$$$$WX??#MRRMMM!\r\n"
+					+ "               ~?WuxiW*`   `\"#$$$$8!!!!??!!!\r\n"
+					+ "             :X- M$$$$       `\"T#$T~!8$WUXU~\r\n"
+					+ "            :%`  ~#$$$m:        ~!~ ?$$$$$$\r\n"
+					+ "          :!`.-   ~T$$$$8xx.  .xWW- ~\"\"##*\"\r\n"
+					+ ".....   -~~:<` !    ~?T#$$@@W@*?$$      /`\r\n"
+					+ "W$@@M!!! .!~~ !!     .:XUW$W!~ `\"~:    :\r\n"
+					+ "#\"~~`.:x%`!!  !H:   !WM$$$$Ti.: .!WUn+!`\r\n"
+					+ ":::~:!!`:X~ .: ?H.!u \"$$$B$$$!W:U!T$$M~\r\n"
+					+ ".~~   :X@!.-~   ?@WTWo(\"*$$$W$TH$! `\r\n"
+					+ "Wi.~!X$?!-~    : ?$$$B$Wu(\"**$RM!\r\n"
+					+ "$R@i.~~ !     :   ~$$$$$B$$en:``\r\n"
+					+ "?MXT@Wx.~    :     ~\"##*$$$$M~\n");
+		
+		} else if (aleatorio == 2) {
+			
+			System.out.println(""
+					+ "                 uuuuuuu\r\n"
+					+ "             uu$$$$$$$$$$$uu\r\n"
+					+ "          uu$$$$$$$$$$$$$$$$$uu\r\n"
+					+ "         u$$$$$$$$$$$$$$$$$$$$$u\r\n"
+					+ "        u$$$$$$$$$$$$$$$$$$$$$$$u\r\n"
+					+ "       u$$$$$$$$$$$$$$$$$$$$$$$$$u\r\n"
+					+ "       u$$$$$$$$$$$$$$$$$$$$$$$$$u\r\n"
+					+ "       u$$$$$$\"   \"$$$\"   \"$$$$$$u\r\n"
+					+ "       \"$$$$\"      u$u       $$$$\"\r\n"
+					+ "        $$$u       u$u       u$$$\r\n"
+					+ "        $$$u      u$$$u      u$$$\r\n"
+					+ "         \"$$$$uu$$$   $$$uu$$$$\"\r\n"
+					+ "          \"$$$$$$$\"   \"$$$$$$$\"\r\n"
+					+ "            u$$$$$$$u$$$$$$$u\r\n"
+					+ "             u$\"$\"$\"$\"$\"$\"$u\r\n"
+					+ "  uuu        $$u$ $ $ $ $u$$       uuu\r\n"
+					+ " u$$$$        $$$$$u$u$u$$$       u$$$$\r\n"
+					+ "  $$$$$uu      \"$$$$$$$$$\"     uu$$$$$$\r\n"
+					+ "u$$$$$$$$$$$uu    \"\"\"\"\"    uuuu$$$$$$$$$$\r\n"
+					+ "$$$$\"\"\"$$$$$$$$$$uuu   uu$$$$$$$$$\"\"\"$$$\"\r\n"
+					+ " \"\"\"      \"\"$$$$$$$$$$$uu \"\"$\"\"\"\r\n"
+					+ "           uuuu \"\"$$$$$$$$$$uuu\r\n"
+					+ "  u$$$uuu$$$$$$$$$uu \"\"$$$$$$$$$$$uuu$$$\r\n"
+					+ "  $$$$$$$$$$\"\"\"\"           \"\"$$$$$$$$$$$\"\r\n"
+					+ "   \"$$$$$\"                      \"\"$$$$\"\"\r\n"
+					+ "     $$$\"                         $$$$\"\n");
+		
+		} else {
+			
+			System.out.println(""
+					+ "                       uuuuuuuuuuuuuuuuuuuuu.\r\n"
+					+ "                   .u$$$$$$$$$$$$$$$$$$$$$$$$$$W.\r\n"
+					+ "                 u$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$Wu.\r\n"
+					+ "               $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$i\r\n"
+					+ "              $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n"
+					+ "         `    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n"
+					+ "           .i$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$i\r\n"
+					+ "           $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$W\r\n"
+					+ "          .$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$W\r\n"
+					+ "         .$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$i\r\n"
+					+ "         #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$.\r\n"
+					+ "         W$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n"
+					+ "$u       #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$~\r\n"
+					+ "$#      `\"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n"
+					+ "$i        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n"
+					+ "$$        #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n"
+					+ "$$         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n"
+					+ "#$.        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#\r\n"
+					+ " $$      $iW$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$!\r\n"
+					+ " $$i      $$$$$$$#\"\" `\"\"\"#$$$$$$$$$$$$$$$$$#\"\"\"\"\"\"#$$$$$$$$$$$$$$$W\r\n"
+					+ " #$$W    `$$$#\"            \"       !$$$$$`           `\"#$$$$$$$$$$#\r\n"
+					+ "  $$$     ``                 ! !iuW$$$$$                 #$$$$$$$#\r\n"
+					+ "  #$$    $u                  $   $$$$$$$                  $$$$$$$~\r\n"
+					+ "   \"#    #$$i.               #   $$$$$$$.                 `$$$$$$\r\n"
+					+ "          $$$$$i.                \"\"\"#$$$$i.               .$$$$#\r\n"
+					+ "          $$$$$$$$!         .   `    $$$$$$$$$i           $$$$$\r\n"
+					+ "          `$$$$$  $iWW   .uW`        #$$$$$$$$$W.       .$$$$$$#\r\n"
+					+ "            \"#$$$$$$$$$$$$#`          $$$$$$$$$$$iWiuuuW$$$$$$$$W\r\n"
+					+ "               !#\"\"    \"\"             `$$$$$$$##$$$$$$$$$$$$$$$$\r\n"
+					+ "          i$$$$    .                   !$$$$$$ .$$$$$$$$$$$$$$$#\r\n"
+					+ "         $$$$$$$$$$`                    $$$$$$$$$Wi$$$$$$#\"#$$`\r\n"
+					+ "         #$$$$$$$$$W.                   $$$$$$$$$$$#   ``\r\n"
+					+ "          `$$$$##$$$$!       i$u.  $. .i$$$$$$$$$#\"\"\r\n"
+					+ "             \"     `#W       $$$$$$$$$$$$$$$$$$$`      u$#\r\n"
+					+ "                            W$$$$$$$$$$$$$$$$$$      $$$$W\r\n"
+					+ "                            $$`!$$$##$$$$``$$$$      $$$$!\r\n"
+					+ "                           i$\" $$$$  $$#\"`  \"\"\"     W$$$$\r\n"
+					+ "                                                   W$$$$!\r\n"
+					+ "                      uW$$  uu  uu.  $$$  $$$Wu#   $$$$$$\r\n"
+					+ "                     ~$$$$iu$$iu$$$uW$$! $$$$$$i .W$$$$$$\r\n"
+					+ "             ..  !   \"#$$$$$$$$$$##$$$$$$$$$$$$$$$$$$$$#\"\r\n"
+					+ "             $$W  $     \"#$$$$$$$iW$$$$$$$$$$$$$$$$$$$$$W\r\n"
+					+ "             $#`   `       \"\"#$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n"
+					+ "                              !$$$$$$$$$$$$$$$$$$$$$#`\r\n"
+					+ "                              $$$$$$$$$$$$$$$$$$$$$$!\r\n"
+					+ "                            $$$$$$$$$$$$$$$$$$$$$$$`\r\n"
+					+ "                             $$$$$$$$$$$$$$$$$$$$\"\n");
+		
+		}		
+		
+	}
+												
+	public void victoria() {
+		
+		System.out.println(""
+				+ "             ___     ___\r\n"
+				+ "      ,_    / _,\\   /,_ \\    _,\r\n"
+				+ "      | \\   \\( \\|   |/ )/   / |\r\n"
+				+ "      |  \\_  \\\\       //  _/  |\r\n"
+				+ "      (_   \\_) \\     / ( /   _)\r\n"
+				+ "      (\\_   `   \\   /   `   _/)\r\n"
+				+ "       ,\\   -=~  /   \\  ~=-   /,\r\n"
+				+ "    ~^~^~^~^~^~^~^~^~^~^~^~^~^~^~\n");
+		
+	}					
+	
+	
+	// ------------------------------------ A L E A T O R Y ------------------------------------ //
+		
+	public int generar_numero_aleatorio(int minimo, int maximo) {
+			
+		return (int) Math.floor(Math.random() * (minimo - (maximo + 1)) + (maximo + 1));
+		
+	}
+	
 }
