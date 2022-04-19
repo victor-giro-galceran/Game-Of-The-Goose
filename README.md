@@ -8,7 +8,7 @@ On his turn, each player rolls 2 dice that indicate the number of squares he mus
 ### Project state
 | Today's code  | To update     |
 | ------------- | ------------- |
-|  <ul><li>[x] Works</li><li>[x] Simple</li><li>[x] Interactive</li><li>[x] Can be improved</li></ul>  | <li>[ ] More user-friendly</li><li>[ ] Optimize</li><li>[ ] Not definitive</li><li>[ ] Maybe a menu?</li>  |
+| <ul><li>[x] Works</li><li>[x] Simple</li><li>[x] Interactive</li><li>[x] Can be improved</li></ul> | <li>[ ] More user-friendly</li><li>[ ] Optimize</li><li>[ ] Not definitive</li><li>[ ] Maybe a menu?</li> |
 
 # Project function
 
