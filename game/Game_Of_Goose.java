@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 public class Game_Of_Goose {
 	
 	Scanner scan = new Scanner(System.in);
@@ -40,114 +39,110 @@ public class Game_Of_Goose {
 	// --------------------------------------- M E N U S --------------------------------------- //
 	
 	public void menu() {
-		
+
 		jugadores();
-		
+
 		int opcion = 0;
-				
+
 		do {
-				System.out.println("\n==================================\n");
-				System.out.println("0. Designar nombres a los jugadores");
-				System.out.println("1. Jugar");
-				System.out.println("2. Segunda_opcion");
-				System.out.println("3. Tercera_opcion");
-				System.out.println("4. Cuarta_opcion");				
-				System.out.println("6. Salir");
+			System.out.println("\n==================================\n");
+			System.out.println("0. Designar nombres a los jugadores");
+			System.out.println("1. Jugar");
+			System.out.println("2. Segunda_opcion");
+			System.out.println("3. Tercera_opcion");
+			System.out.println("4. Cuarta_opcion");
+			System.out.println("6. Salir");
+
+			System.out.print(">> ");
+			opcion = scan.next().charAt(0);
+
+			System.out.println("\n==================================\n");
+
+			switch (opcion) {
+
+			case '0': 
 				
+				System.out.println("_____________________________________________________________\n");
+				System.out.println("Has seleccionado la opci�n 0: \"Designar nombres a los jugadores\"\n");
+
+				String nombre_jugadores[] = new String[jugadores()];
+
+				int i = jugadores();
+
+				for (i = 0; i < nombre_jugadores.length; i++) {
+
+					System.out.print("Introduce el nombre para el jugador [" + (i + 1) + "]: ");
+					nombre_jugadores[i] = scan.next();
+
+				}
+
+				System.out.println("_____________________________________________________________\n");
+				break;
+
+			case '1': 
+
+				System.out.println("_____________________________________________________________\n");
+				System.out.println("Has seleccionado la opci�n 1: \"Primera_opcion\"\n");
+
+				// AQUI EL C�DIGO
+
+				System.out.println("_____________________________________________________________\n");
+				break;
+
+			case '2': 
+
+				System.out.println("_____________________________________________________________\n");
+				System.out.println("Has seleccionado la opci�n 2: \"Segunda_opcion\"\n");
+
+				// AQUI EL C�DIGO
+
+				System.out.println("_____________________________________________________________\n");
+				break;
+
+			case '3': 
+
+				System.out.println("_____________________________________________________________\n");
+				System.out.println("Has seleccionado la opci�n 3: \"Tercera_opcion\"\n");
+
+				// AQUI EL C�DIGO
+
+				System.out.println("_____________________________________________________________\n");
+				break;
+
+			case '4': 
+
+				System.out.println("_____________________________________________________________\n");
+				System.out.println("Has seleccionado la opci�n 4: \"Cuarta_opcion\"\n");
+
+				// AQUI EL C�DIGO
+
+				System.out.println("_____________________________________________________________\n");
+				break;
+
+			case '6': 
 				
-				System.out.print(">> ");
-				opcion = scan.next().charAt(0);
-				
-				System.out.println("\n==================================\n");
-				
-				switch (opcion) {
-				
-					case '0': // ================================  O P C I � N  0  ================================
-						System.out.println("_____________________________________________________________\n");
-			    		System.out.println("Has seleccionado la opci�n 0: \"Designar nombres a los jugadores\"\n");
-			    		
-			    		String nombre_jugadores[] = new String [jugadores()];
-			    		
-			    		int i = jugadores();
-			    		
-			    		for (i = 0; i < nombre_jugadores.length; i++) {
-			    			
-			    			System.out.print("Introduce el nombre para el jugador [" + (i + 1) + "]: ");
-			    			nombre_jugadores[i] = scan.next();
-			    			
-			    		}
-			    		
-						System.out.println("_____________________________________________________________\n");
-						break;
-			
-					case '1': // ================================  O P C I � N  1  ================================
-						
-						System.out.println("_____________________________________________________________\n");
-			    		System.out.println("Has seleccionado la opci�n 1: \"Primera_opcion\"\n");
-			    		
-			    		// 				AQUI 			EL 				C�DIGO
-						
-						System.out.println("_____________________________________________________________\n");
-						break;
-						
-						
-					case '2': // ================================  O P C I � N  2  ================================
-					
-						System.out.println("_____________________________________________________________\n");
-			    		System.out.println("Has seleccionado la opci�n 2: \"Segunda_opcion\"\n");
-			    		
-			    		// 				AQUI 			EL 				C�DIGO
-			    		
-						System.out.println("_____________________________________________________________\n");
-						break;
-						
-					
-					case '3': // ================================  O P C I � N  3  ================================
-					
-						System.out.println("_____________________________________________________________\n");
-			    		System.out.println("Has seleccionado la opci�n 3: \"Tercera_opcion\"\n");
-						
-			    		// 				AQUI 			EL 				C�DIGO
-			    		
-						System.out.println("_____________________________________________________________\n");
-						break;
-				
-				
-					case '4': // ================================  O P C I � N  4  ================================
-					
-						System.out.println("_____________________________________________________________\n");
-			    		System.out.println("Has seleccionado la opci�n 4: \"Cuarta_opcion\"\n");
-			    		
-			    		// 				AQUI 			EL 				C�DIGO
-						
-						System.out.println("_____________________________________________________________\n");
-						break;		
-						
-						
-					case '6': // ================================  O P C I � N  6  ================================
-						System.out.println("_____________________________________________________________\n");
-			    		System.out.println("Has seleccionado la opci�n 6: \"Salir\"\n");
-			    		
-			    		// 				AQUI 			EL 				C�DIGO POR SI QUIERES ALGO AL SALIR DE LA SIMULACION
-			    		
-			    		System.out.println("\n_____________________________________________________________\n");
-						break;			
-					
-				
-					default:
-					
-						System.out.println("Introduce n�meros entre el 0 y el 6");
-			
-				}			
-		
+				System.out.println("_____________________________________________________________\n");
+				System.out.println("Has seleccionado la opci�n 6: \"Salir\"\n");
+
+				// AQUI EL C�DIGO POR SI QUIERES ALGO AL SALIR DE LA SIMULACION
+
+				System.out.println("\n_____________________________________________________________\n");
+				break;
+
+			default:
+
+				System.out.println("Introduce n�meros entre el 0 y el 6");
+
+			}
+
 		} while (opcion != '6');
-			
+
 		System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n");
 		System.out.println("=================== Simulacion finalizada ===================");
-			
-		scan.close();	
-	
-	}	
+
+		scan.close();
+
+	}
 	
 	public void menu_bienvenida() {
 		
@@ -158,43 +153,45 @@ public class Game_Of_Goose {
 				+ "88      88~~~88      88    88 8b      88~~~88 \r\n"
 				+ "88booo. 88   88      `8b  d8' Y8b  d8 88   88 \r\n"
 				+ "Y88888P YP   YP       `Y88P'   `Y88P' YP   YP \r");
+		
 		System.out.print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 		
 	}
 	
 	public int jugadores() {
-		
+
 		int numero = 2;
-		
+
 		System.out.println("�Cu�ntos jugadores hay?");
 		System.out.print(">> ");
 		numero = scan.nextInt();
-		
+
 		while (numero < 2 || numero > 4) {
-			
-			System.out.print(":::::::::::::::::::::::::::::::::::::::\n�error, n�mero de jugadores incorrecto!\n:::::::::::::::::::::::::::::::::::::::\n");			
+
+			System.out.print(
+					":::::::::::::::::::::::::::::::::::::::\n�error, n�mero de jugadores incorrecto!\n:::::::::::::::::::::::::::::::::::::::\n");
 			System.out.println("\nIntroduce un n�mero de jugadores: ");
 			numero = scan.nextInt();
-			
+
 		}
-			
+
 		return numero;
-	
+
 	}
-	
-		
-	// ---------------------------------- A E S T H E T I C ------------------------------------ //
-	
+
+	// ---------------------------------- A E S T H E T I C
+	// ------------------------------------ //
+
 	public void sleep(int time) {
-		
+
 		try {
-			
+
 			Thread.sleep(time);
-			
+
 		} catch (InterruptedException e) {
-				
+
 		}
-		
+
 	}
 	
 	public void dados() {
